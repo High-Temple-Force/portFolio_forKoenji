@@ -150,3 +150,20 @@ a.his-link{
     -moz-box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
     border: 1px solid #d9d9d9;
   }
+
+  body{
+    margin:0;
+    padding: 0;
+}
+
+table{
+    border:"0";
+    margin:0;
+    padding: 0;
+    width:100%;
+}
+
+.photo{
+    width:100%;
+    height: 600px;
+}
