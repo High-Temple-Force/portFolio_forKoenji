@@ -151,11 +151,12 @@ a.his-link{
     border: 1px solid #d9d9d9;
   }
 
-  body{
+body{
     margin:0;
     padding: 0;
 }
 
+<<<<<<< HEAD
 /*トップページ、写真スタイル*/
 .photo_main{
     display: flex;
@@ -169,4 +170,21 @@ a.his-link{
     width : -webkit-calc(100% / 3) ;
     width : calc(100% / 3) ;;
 
+=======
+table{
+    border:0;
+    margin:0;
+    padding: 0;
+    width:100%;
+}
+
+.photo{
+    width: calc(100% / 3);
+    height: 600px;
+>>>>>>> 2b222cac5ee03d16699bed5c6cf9e0e34e962e1f
+}
+.photo_main{
+    line-height: 0;
+    display: flex;
+    flex-wrap:wrap;
 }
