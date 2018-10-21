@@ -156,21 +156,6 @@ body{
     padding: 0;
 }
 
-<<<<<<< HEAD
-/*トップページ、写真スタイル*/
-.photo_main{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.photo{
-    width : 33.33333% ; /* 未対応ブラウザ用フォールバック */
-    width : -webkit-calc(100% / 3) ;
-    width : calc(100% / 3) ;;
-
-=======
 table{
     border:0;
     margin:0;
@@ -178,13 +163,26 @@ table{
     width:100%;
 }
 
+header.header-2{
+    background-color: black;
+    display:  table-cell; 
+    vertical-align:  middle;
+}
+h1.photo-h1{
+    color: rgb(238, 238, 238);
+    font-family: 'Ouicksand', sans-serif;
+    text-align: center;
+    padding: 20% 40%;
+ 
+}
 .photo{
     width: calc(100% / 3);
     height: 600px;
->>>>>>> 2b222cac5ee03d16699bed5c6cf9e0e34e962e1f
 }
-.photo_main{
+p.photo_main{
     line-height: 0;
     display: flex;
     flex-wrap:wrap;
+    width: 100%;
+
 }
