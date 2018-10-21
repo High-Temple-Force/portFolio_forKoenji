@@ -156,14 +156,17 @@ a.his-link{
     padding: 0;
 }
 
-table{
-    border:"0";
-    margin:0;
-    padding: 0;
-    width:100%;
+/*トップページ、写真スタイル*/
+.photo_main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .photo{
-    width:100%;
-    height: 600px;
+    width : 33.33333% ; /* 未対応ブラウザ用フォールバック */
+    width : -webkit-calc(100% / 3) ;
+    width : calc(100% / 3) ;;
+
 }
