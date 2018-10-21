@@ -2,22 +2,29 @@
 
 
 header {
-    margin: 0px;
+    margin: 0px 0px;
     padding-bottom: 0px;
-    font-family: serif;
-    text-shadow: 1px 1px 2px black;
-    border-top: solid 2px #d9d9d9;
-    border-bottom: solid 2px #d9d9d9;
-    width: 100%;
-    margin: 0px auto;
-    background-color: #555555;
+    font-family: 'Ouicksand', sans-serif;
+    /*text-shadow: 1px 1px 2px black;*/
+    letter-spacing: 1px;
+    border-top: solid 1px #d9d9d9;
+    border-bottom: solid 1px #d9d9d9;
+    border-left: solid 1px #d9d9d9;
+    border-right: solid 1px #d9d9d9;
+    width: 100% ;
+    background-color: #fafafa;
     float: left;
     display:  table-cell; 
     vertical-align:  middle;
-    background: linear-gradient(-135deg, #555555, white);
+    /*background: linear-gradient(-135deg, #555555, white);*/
+}
+
+body {
+    font-family: 'Quicksand','Helvetica',Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  
 }
 h1 {
-    color: black;
+    color: rgb(31, 31, 31);
+    font-family: 'Ouicksand', sans-serif;
     padding-left: 20px;
     float: left;
 }
@@ -31,9 +38,10 @@ ul {
 }
 li a {
 	display: block;
-	padding: 7px 16px;
-	text-decoration: none;
-    color: white;
+    padding: 7px 16px;
+    text-emphasis: size after 1px; ;
+    text-decoration: none;
+    color: rgb(31, 31, 31);
 }
 li {
     text-align: center;
@@ -45,26 +53,33 @@ li {
 .tabs {
     margin-top: 50px;
     padding-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-bottom: solid 1px #d9d9d9;
+    background-color: #fafafa;
+    box-shadow: 0 0 8px #fafafa;
     width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: 0 0;
 }
     /*タブのスタイル*/
 .tab_item {
-    width: calc(100%/3);
+    width: calc(100%/3) ;
+    box-sizing: border-box;
     height: 50px;
-    border-bottom: 3px solid black;
-    background-color: #d9d9d9;
+    border-bottom: solid 1px #d9d9d9;
+    border-left: solid 1px #d9d9d9;
+    border-right: solid 1px #d9d9d9;
+    font-family: 'Ouicksand', sans-serif;
+    letter-spacing: 1px;
+    /*border-bottom: 1px solid rgb(240, 240, 240);*/
+    background-color: #fafafa;
     line-height: 50px;
     font-size: 16px;
     text-align: center;
-    color: #565656;
+    color: #565656;;;;;
     display: block;
     float: left;
     text-align: center;
-    font-weight: bold;
+    /*font-weight: bold;*/
     transition: all 0.2s ease;
 }
 .tab_item:hover {
@@ -80,6 +95,7 @@ input[name="tab_item"] {
     padding: 40px 40px 0;
     clear: both;
     overflow: hidden;
+    border: 1px solid #d9d9d9;
 }
 /*選択されているタブのコンテンツのみを表示*/
 #takuto:checked ~ #takuto_content,
@@ -116,20 +132,21 @@ a.his-link{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex-wrap: wrap
-
+    flex-wrap: wrap;
   }
   /*ボックスのスタイル*/
   .col{
     width: calc(100% / 3);
+    padding: 50px 25px;
+    height: 175px;
     flex-basis: 25%;
     background: #fff;
     font-size: 64px;
     text-align: center;
     margin-bottom: 30px;
     border-radius: 15px 15px 15px 15px;
-    box-shadow:rgba(100, 99, 99, 0.51) 7px 7px 8px -4px;
-    -webkit-box-shadow:rgba(100, 99, 99, 0.51) 7px 7px 8px -4px;
-    -moz-box-shadow:rgba(100, 99, 99, 0.51) 7px 7px 8px -4px;
-    border: 3px solid rgb(204, 203, 203);
+    box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    -webkit-box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    -moz-box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    border: 1px solid #d9d9d9;
   }
