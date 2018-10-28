@@ -2,23 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>高円寺ポートフォリオ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Koenjineer Portfolio</title>
+    <link rel="stylesheet" href="style-2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
 ​ </head>
+
  <body>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
     <header class="header-2">
         <h1 class="photo-h1">Koenjineer Portfolio</h1>
-        <ul>
-          
-        </ul>
+
     </header>
+
     <p class="photo_main">
         <img class="photo" src="https://storage.googleapis.com/portfolio-backet/takuto/takutotest.jpg">
         <img class="photo" src="https://storage.googleapis.com/portfolio-backet/takuto/takutotest.jpg">
         <img class="photo" src="https://storage.googleapis.com/portfolio-backet/takuto/test-1.JPG">
     </p> 
+    <script>
+        $(document).ready(function () {
+            hsize = $(window).height();
+            $("header.header-2").css("height", hsize + "px");
+        }) 
+        $(window).resize(function () {
+            hsize = $(window).height();
+            $("header.header-2").css("height", hsize + "px");
+        })
+    </script>
+    <!--  ここに、スクロール時の処理
+        <script src="https://unpkg.com/scrollreveal" type="text/javascript">
+        window.sr= new scrollReveal();
+        sr.reveal('.photo');
+    </script>-->
  </body>
 </html>

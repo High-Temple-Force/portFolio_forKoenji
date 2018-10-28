@@ -165,7 +165,7 @@ table{
 
 header.header-2{
     background-color: black;
-    display:  table-cell; 
+    display: flex; 
     vertical-align:  middle;
 }
 h1.photo-h1{
