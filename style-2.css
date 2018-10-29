@@ -1,0 +1,50 @@
+html{
+    box-sizing: border-box;
+    background-color: black;
+}
+
+header {
+    margin: 0px 0px;
+    padding-bottom: 0px;
+    font-family: 'Ouicksand', sans-serif;
+    /*text-shadow: 1px 1px 2px black;*/
+    letter-spacing: 1px;
+    width: 100% ;
+    background-color: #fafafa;
+    float: left;
+    display:  table-cell; 
+    vertical-align:  middle;
+    /*background: linear-gradient(-135deg, #555555, white);*/
+}
+
+body {
+    margin: 0%;
+    font-family: 'Quicksand','Helvetica',Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'; 
+}
+
+h1 {
+    color: rgb(31, 31, 31);
+    font-family: 'Ouicksand', sans-serif;
+    float: none;
+}
+header.header-2{
+    background-color: black;
+    vertical-align:  middle;
+}
+h1.photo-h1{
+    color: rgb(238, 238, 238);
+    font-family: 'Ouicksand', sans-serif;
+    text-align: left;
+    padding: 200px 40%;
+}
+
+.photo{
+    width: calc(100% / 3);
+    height: 600px;
+}
+p.photo_main{
+    line-height: 0;
+    display: flex;
+    flex-wrap:wrap;
+    width: 100%;
+}
