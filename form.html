@@ -3,32 +3,55 @@
     <head>
         <meta charset="utf-8">
         <title>Portfolio form</title>
+        <link rel="stylesheet" href="form.css">
     </head>
 
 
     <body>
-        <h2>
-            Portfolio 入力Form
-        </h2>
-        <form action="">
-            <p>
-                Product Name : <input type="text" name="name" size="40">
-            </p>
+        <div class="title">
+            <h2>
+                    Portfolio 入力Form　<br />
+            </h2>
+        </div>
+        
+        <div class="form">
+            <!--ここに、アクションのタイプ記入-->
+            <form action="">
+                <div class="name">
+                    <h3><br />Product Name : </h3>
+                    <p>
+                        プロダクトの名前を入力してください。<br />  
+                            <input type="text" name="name" size="50" ><br /><br />
+                    </p>
+                </div>
 
-            <p>
-                Description : <textarea name="kanso" rows="6" cols="46"></textarea>
+                <div class="text">
+                    <h3>Description : </h3>
+                     <p>
+                        プロダクトの説明文を入力してください。<br />
+                         <textarea name="text" rows="6" cols="52.5"></textarea><br /><br />
+        
+                    </p>
+                </div>
 
-            </p>
+                <div class="link">
+                    <h3>Link : </h3>
 
-            <p>
-                Link : <input type="text" name="link" size="52">
-            </p>
+                    <p>
+                        プロダクトのURLを入力してください。 <br />
+                        <input type="text" name="link" size="50"><br /><br />
+                    </p>
+                </div>
+                
+                <div class="submit">
+                    <p>
+                        <input type="submit" value="送信">
+                    </p>
+                </div>  
+            </form>    
 
-            <p>
-                <input type="submit" value="送信"> <input type="reset" value="リセット">
-            </p>
-
-        </form>
+        </div>
+        
     </body>
 
 
