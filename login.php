@@ -1,5 +1,6 @@
 <?php
 // セッション開始
+session_start();
 // エラーメッセージの初期化
 $errorMessage = "";
 
@@ -37,7 +38,6 @@ if (isset($_POST["login"])) {
         }
     }
 }
-print $_SESSION["NAME"];
 ?>
 
 <!doctype html>
