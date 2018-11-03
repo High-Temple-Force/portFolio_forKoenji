@@ -23,7 +23,7 @@ if (isset($_POST["login"])) {
                 $dbuserid = $row['id'];
                 $dbpassword = $row['password'];
             }
-            if ($password==$dbpasswd) {
+            if ($password==$dbpassword && $userid == $dbuserid) {
                 session_regenerate_id(true);
                 $_SESSION["NAME"] = $userid;
                 header("Location: index.html");  // メイン画面へ遷移
