@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio form</title>
+        <link rel="stylesheet" href="form.css">
+    </head>
+
+
+    <body>
+        <div class="title">
+            <h2>
+                    Portfolio 入力Form　<br />
+            </h2>
+        </div>
+        
+        <div class="form">
+            <!--ここに、アクションのタイプ記入-->
+            <form action="" method="POST">
+                <div class="name">
+                    <h3><br />Product Name : </h3>
+                    <p>
+                        プロダクトの名前を入力してください。<br />  
+                            <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
+                    </p>
+                </div>
+
+                <div class="text">
+                    <h3>Description : </h3>
+                     <p>
+                        プロダクトの説明文を入力してください。<br />
+                         <textarea name="text" rows="6" cols="55"></textarea><br /><br />
+        
+                    </p>
+                </div>
+
+                <div class="link">
+                    <h3>Link : </h3>
+
+                    <p>
+                        プロダクトのURLを入力してください。 <br />
+                        <textarea name="link" rows="1" cols="55"></textarea><br /><br />
+                    </p>
+                </div>
+                
+                <div class="submit">
+                    <p>
+                        <input type="submit" value="送信">
+                    </p>
+                </div>  
+            </form>    
+
+        </div>
+        
+    </body>
+
+
+
+</html>
