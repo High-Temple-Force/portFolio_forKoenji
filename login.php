@@ -26,7 +26,7 @@ if (isset($_POST["login"])) {
             if ($password==$dbpasswd) {
                 session_regenerate_id(true);
                 $_SESSION["NAME"] = $userid;
-                header("Location: index.php");  // メイン画面へ遷移
+                header("Location: index.html");  // メイン画面へ遷移
                 exit();  // 処理終了
             } else {
                 // 認証失敗
