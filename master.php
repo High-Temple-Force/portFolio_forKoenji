@@ -33,7 +33,7 @@ $url = Array();
             for ($i=0; $i<count($title); $i++){
                 echo $title[$i];
                 echo $text[$i];
-                echo $row[$i];
+                echo $url[$i];
             }
         ?>
 
