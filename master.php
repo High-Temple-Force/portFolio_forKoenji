@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // ログイン状態チェック
 if (!isset($_SESSION["NAME"])) {
     header("Location: logout.php");
