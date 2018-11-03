@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
             }
             if ($password==$dbpassword && $userid == $dbuserid) {
                 session_regenerate_id(true);
-                $_SESSION["NAME"] = $userid;
+                //$_SESSION["NAME"] = $userid;
                 header("Location: master.php");  // メイン画面へ遷移
                 exit();  // 処理終了
             } else {
