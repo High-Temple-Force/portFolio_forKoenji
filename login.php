@@ -37,8 +37,6 @@ if (isset($_POST["login"])) {
         }
     }
 }
-print $dbpassword;
-print $dbuserid;
 ?>
 
 <!doctype html>
