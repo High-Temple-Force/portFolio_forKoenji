@@ -37,6 +37,7 @@ if (isset($_POST["login"])) {
         }
     }
 }
+print $_SESSION["NAME"];
 ?>
 
 <!doctype html>
