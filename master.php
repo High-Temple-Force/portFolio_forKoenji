@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
                     Portfolio 入力Form　<br />
             </h2>
         </div>
-        
+        <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
         <div class="form">
             <!--ここに、アクションのタイプ記入-->
             <form action="" method="POST">
