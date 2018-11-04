@@ -105,3 +105,14 @@ input[name="tab_item"] {
     background-color: black;
     color: #fff;
 }
+
+.login{
+    margin-top: 50px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #d9d9d9;
+    background-color: #fafafa;
+    box-shadow: 0 0 8px #fafafa;
+    width: 100%;
+    height: auto;
+    margin: 0 0;
+}

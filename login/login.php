@@ -43,22 +43,36 @@ if (isset($_POST["login"])) {
 <!doctype html>
 <html>
     <head>
-            <meta charset="UTF-8">
-            <title>ログイン</title>
+        <meta charset="utf-8">
+        <title>Koenjineer Portfolio</title>
+        <link rel="stylesheet" href="main.css">
+  ​
     </head>
+    
     <body>
-        <h1>ログイン画面</h1>
-        <form id="loginForm" name="loginForm" action="" method="POST">
-            <fieldset>
-                <legend>ログインフォーム</legend>
-                <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
-                <label for="userid">ユーザーID</label><input type="text" id="userid" name="userid" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["userid"])) {echo htmlspecialchars($_POST["userid"], ENT_QUOTES);} ?>">
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
+
+        <header class="header">
+            <h1>Koenjineer Portfolio login</h1>
+            <ul>
+                <li><a class="active" href="../index.html">Home</a></li>
+            </ul>
+        </header>
+        <div class="tabs">
+            <div class="login">
+                <form id="loginForm" name="loginForm" action="" method="POST">
+                    
+                        
+                        <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
+                        <label for="userid">ユーザーID</label><input type="text" id="userid" name="userid" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["userid"])) {echo htmlspecialchars($_POST["userid"], ENT_QUOTES);} ?>">
+                        <br>
+                        <label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力">
+                        <br>
+                        <input type="submit" id="login" name="login" value="ログイン">
+                    
+                </form>
                 <br>
-                <label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力">
-                <br>
-                <input type="submit" id="login" name="login" value="ログイン">
-            </fieldset>
-        </form>
-        <br>
+            </div> 
+        </div>
     </body>
 </html>
