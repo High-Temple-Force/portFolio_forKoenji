@@ -1,5 +1,6 @@
 <?php
 // セッション開始
+session_start();
 // エラーメッセージの初期化
 $errorMessage = "";
 
@@ -25,7 +26,7 @@ if (isset($_POST["login"])) {
             }
             if ($password==$dbpassword && $userid == $dbuserid) {
                 session_regenerate_id(true);
-                $_SESSION["NAME"] = $userid;
+                $_SESSION["NAME"] = "master";
                 header("Location: master.php");  // メイン画面へ遷移
                 exit();  // 処理終了
             } else {

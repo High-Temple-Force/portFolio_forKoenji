@@ -1,0 +1,107 @@
+header {
+    margin: 0px 0px;
+    padding-bottom: 0px;
+    font-family: 'Ouicksand', sans-serif;
+    /*text-shadow: 1px 1px 2px black;*/
+    letter-spacing: 1px;
+    border-top: solid 1px #d9d9d9;
+    border-bottom: solid 1px #d9d9d9;
+    border-left: solid 1px #d9d9d9;
+    border-right: solid 1px #d9d9d9;
+    width: 100% ;
+    background-color: #fafafa;
+    float: left;
+    display:  table-cell; 
+    vertical-align:  middle;
+    /*background: linear-gradient(-135deg, #555555, white);*/
+}
+
+body {
+    font-family: 'Quicksand','Helvetica',Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  
+}
+h1 {
+    color: rgb(31, 31, 31);
+    font-family: 'Ouicksand', sans-serif;
+    padding-left: 20px;
+    float: left;
+}
+ul {
+	width:auto;
+	margin: 0;
+	padding-top: 25px;
+	list-style-type: none;
+    display: inline-block;
+    float: right;
+}
+li a {
+	display: block;
+    padding: 7px 16px;
+    text-emphasis: size after 1px; ;
+    text-decoration: none;
+    color: rgb(31, 31, 31);
+}
+li {
+    text-align: center;
+    display: inline-block;
+    padding: 0 8px;
+}
+
+
+.tabs {
+    margin-top: 50px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #d9d9d9;
+    background-color: #fafafa;
+    box-shadow: 0 0 8px #fafafa;
+    width: 100%;
+    height: auto;
+    margin: 0 0;
+}
+    /*タブのスタイル*/
+.tab_item {
+    width: calc(100%/2) ;
+    box-sizing: border-box;
+    height: 50px;
+    border-bottom: solid 1px #d9d9d9;
+    border-left: solid 1px #d9d9d9;
+    border-right: solid 1px #d9d9d9;
+    font-family: 'Ouicksand', sans-serif;
+    letter-spacing: 1px;
+    /*border-bottom: 1px solid rgb(240, 240, 240);*/
+    background-color: #fafafa;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #565656;;;;;
+    display: block;
+    float: left;
+    text-align: center;
+    /*font-weight: bold;*/
+    transition: all 0.2s ease;
+}
+.tab_item:hover {
+    opacity: 0.75;
+}
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+    display: none;
+}
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+    border: 1px solid #d9d9d9;
+}
+/*選択されているタブのコンテンツのみを表示*/
+#add:checked ~ #add_content,
+#change:checked ~ #change_content
+ {
+    display: block;
+}
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+    background-color: black;
+    color: #fff;
+}
