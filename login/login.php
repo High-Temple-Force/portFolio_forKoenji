@@ -55,7 +55,7 @@ if (isset($_POST["login"])) {
         <header class="header">
             <h1>Koenjineer Portfolio login</h1>
             <ul>
-                <li><a class="active" href="../index.html">Home</a></li>
+                <li><a class="active" href="../index.php">Home</a></li>
             </ul>
         </header>
         <div class="tabs">
