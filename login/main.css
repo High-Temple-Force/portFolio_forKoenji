@@ -96,7 +96,7 @@ input[name="tab_item"] {
 }
 /*選択されているタブのコンテンツのみを表示*/
 #add:checked ~ #add_content,
-#change:checked ~ #change_content,
+#change:checked ~ #change_content
  {
     display: block;
 }
