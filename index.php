@@ -40,7 +40,7 @@
             <li><a class="active" href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="login/master.php">Login</a></li>
+            <li><a href="login/login.php">Login</a></li>
         </ul>
     </header>
 
