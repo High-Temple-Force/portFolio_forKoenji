@@ -46,6 +46,7 @@ if (isset($_POST["submit"])) {
         }
     }
 }
+echo($cmd)
 ?>
 
 <!DOCTYPE html>
