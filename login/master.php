@@ -17,14 +17,28 @@ if (isset($_POST["submit"])) {
         $Message = '説明文が未入力です。';
     } else if (empty($_POST["link"])) {
         $Message = 'リンクが未入力です。';
+    } else if (empty($_POST["userdef"])) {
+        $Message = 'ユーザーが指定されていません。';
     }
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
         $link = $_POST["link"];
+        //ユーザー選択変数
+        $username = $_POST["userdef"];
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values ("' .$title .'","' .$text .'","' .$link .'");';
+            if ($username == "aoki") {  
+                $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } elseif ($username == "mori") {
+                $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } elseif ($username == "yokoi") {
+                $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } 
+
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
         } catch (PDOException $e) {
@@ -51,7 +65,7 @@ if (isset($_POST["submit"])) {
         <header class="header">
             <h1>Koenjineer Portfolio edit</h1>
             <ul>
-                <li><a class="active" href="../index.html">Home</a></li>
+                <li><a class="active" href="../index.php">Home</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </header>
@@ -67,6 +81,18 @@ if (isset($_POST["submit"])) {
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
                     <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+
+                    <!--ユーザー選択のセレクトボックス-->
+                    <div class="selectuser">
+                        <select name="userdef" size="3" id="selectbox">
+                            <option value="aoki">Takuto</option>
+                            <option value="mori">Hayato</option>
+                            <option value="yokoi">Daiki</option>
+                        </select>
+
+
+                    </div>
+                    
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
