@@ -6,7 +6,7 @@ if (!isset($_SESSION["NAME"])) {
     exit;
 }
 $Message = "";
-$name = $_SESSION["name"];
+$name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 if ($name == "aoki") {  
@@ -65,7 +65,6 @@ if (isset($_POST["submit"])) {
         }
     }
 }
-print $_POST["userdef"];
 ?>
 
 <!DOCTYPE html>
