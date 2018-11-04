@@ -5,15 +5,16 @@ if (!isset($_SESSION["NAME"])) {
     header("Location: logout.php");
     exit;
 }
-$errorMessage = "";
+$Message = "";
+
 
 if (isset($_POST["submit"])) {
     if (empty($_POST["name"])) {  // emptyは値が空のとき
-        $errorMessage = 'タイトルが未入力です。';
+        $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
-        $errorMessage = '説明文が未入力です。';
+        $Message = '説明文が未入力です。';
     } else if (empty($_POST["link"])) {
-        $errorMessage = 'リンクが未入力です。';
+        $Message = 'リンクが未入力です。';
     }
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
@@ -21,11 +22,11 @@ if (isset($_POST["submit"])) {
         $link = $_POST["link"];
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values (' .$title .',' .$text .',' .$link .');';
+            $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values ("' .$title .'","' .$text .'","' .$link .'");';
             $pdo->query($cmd);
-            print $cmd;
+            $Message = '登録が完了しました。';
         } catch (PDOException $e) {
-            $errorMessage = 'データベースエラー';
+            $Message = 'データベースエラー';
         }
     }
 }
@@ -46,7 +47,7 @@ if (isset($_POST["submit"])) {
                     Portfolio 入力Form　<br />
             </h2>
         </div>
-        <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
+        <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
         <div class="form">
             <!--ここに、アクションのタイプ記入-->
             <form action="" method="POST">
