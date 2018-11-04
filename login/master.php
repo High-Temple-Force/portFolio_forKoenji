@@ -151,7 +151,7 @@ if (isset($_POST["submit"])) {
                         <?php
                             foreach($product as $p){
                                 print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
+                                print '<input type="text" class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
