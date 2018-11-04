@@ -116,3 +116,43 @@ input[name="tab_item"] {
     height: auto;
     margin: 0 0;
 }
+h5.his-content{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*ボックス内のテキストのスタイル*/
+p.content-text{
+    font-size: 12px;
+    font-weight: normal;
+}
+/*ボックス内linkのスタイル*/
+a.his-link{
+    font-size: 12px;;
+    text-decoration: none;
+    color: black;
+}
+/*flexスタイル*/
+.flex{
+    padding: 2.5% 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  /*ボックスのスタイル*/
+  .col{
+    width: calc(100% / 3);
+    padding: 50px 25px;
+    height: 175px;
+    flex-basis: 25%;
+    background: #fff;
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    -webkit-box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    -moz-box-shadow:rgba(100, 99, 99, 0.51) 4px 4px 5px -4px;
+    border: 1px solid #d9d9d9;
+  }
