@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
         $link = $_POST["link"];
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            $cmd = 'INSERT INTO koenji.t_a_product (member_id,member_name,p_title,p_text,p_url) values (' .$title .',' .$text .',' .$link .');';
+            $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values (' .$title .',' .$text .',' .$link .');';
             $pdo->query($cmd);
         } catch (PDOException $e) {
             $errorMessage = 'データベースエラー';
