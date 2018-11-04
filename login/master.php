@@ -154,7 +154,6 @@ if (isset($_POST["submit"])) {
                                 print '<input type="text" class="his-content" value="' .$p[0] .'"><br>';
                                 print '<input type="text" class="content-text" value="' .$p[1] .'"></p>';
                                 print '<input type="text" class="his-link" value="' .$p[2] .'"></a>';
-                                print '</h5>';
                                 print '</div>';
                             }
                         ?>
