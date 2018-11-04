@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
             } elseif ($username == "yokoi") {
                 $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
-            } 
+            } ;
 
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
         }
     }
 }
-echo($cmd)
+echo($cmd);
 ?>
 
 <!DOCTYPE html>
