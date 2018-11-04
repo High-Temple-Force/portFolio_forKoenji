@@ -47,13 +47,13 @@ if (isset($_POST["submit"])) {
         //$username = $_POST["userdef"];
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            if ($name == "aoki") {  
+            if ($name == "takuto") {  
                 $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "mori") {
+            } elseif ($name == "hayato") {
                 $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "yokoi") {
+            } elseif ($name == "daiki") {
                 $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
             } 
