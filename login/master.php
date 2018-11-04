@@ -6,6 +6,25 @@ if (!isset($_SESSION["NAME"])) {
     exit;
 }
 $Message = "";
+$name = $_SESSION["name"];
+$product = Array();
+$pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+if ($name == "aoki") {  
+    $cmd = 'SELECT p_title,p_text,p_url from t_a_product;';
+    foreach($pdo->query($cmd) as $row){
+        $product[] = $row;
+    }
+} elseif ($name == "mori") {
+    $cmd = 'SELECT p_title,p_text,p_url from t_m_product;';
+    foreach($pdo->query($cmd) as $row){
+        $product[] = $row;
+    }
+} elseif ($name == "yokoi") {
+    $cmd = 'SELECT p_title,p_text,p_url from t_y_product;';
+    foreach($pdo->query($cmd) as $row){
+        $product[] = $row;
+    }
+} 
 
 
 
@@ -25,16 +44,16 @@ if (isset($_POST["submit"])) {
         $text = $_POST["text"];
         $link = $_POST["link"];
         //ユーザー選択変数
-        $username = $_POST["userdef"];
+        //$username = $_POST["userdef"];
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            if ($username == "aoki") {  
+            if ($name == "aoki") {  
                 $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($username == "mori") {
+            } elseif ($name == "mori") {
                 $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($username == "yokoi") {
+            } elseif ($name == "yokoi") {
                 $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
             } 
@@ -64,7 +83,7 @@ print $_POST["userdef"];
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
 
         <header class="header">
-            <h1>Koenjineer Portfolio edit</h1>
+            <h1>Koenjineer Portfolio edit logined by <?php print $name; ?></h1>
             <ul>
                 <li><a class="active" href="../index.php">Home</a></li>
                 <li><a href="logout.php">Logout</a></li>
@@ -88,13 +107,7 @@ print $_POST["userdef"];
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
                               <!--ユーザー選択のセレクトボックス-->
-                            <div class="selectuser">
-                                <select name="userdef" size="1" id="selectbox">
-                                    <option value="aoki">Takuto</option>
-                                    <option value="mori">Hayato</option>
-                                    <option value="yokoi">Daiki</option>
-                                </select>
-                            </div>  
+                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>
@@ -135,7 +148,19 @@ print $_POST["userdef"];
 
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
-                    
+                    <div class="flex">
+                        <?php
+                            foreach($product as $p){
+                                print '<div class="col">';
+                                print '<h5 class="his-content">' .$p[0] .'<br>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '</h5>';
+                                print '</div>';
+                            }
+                        ?>
+
+                    </div>
                 </div>
             </div>
         </div>
