@@ -3,7 +3,7 @@
     $product_mori = Array();
     $product_yokoi = Array();
     try{
-        pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+        $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
         $cmd = 'SELECT p_title,p_text,p_url from t_a_product;';
         foreach($pdo->query($cmd) as $row){
             $product_aoki[] = $row;
