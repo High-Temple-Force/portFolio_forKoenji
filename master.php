@@ -36,29 +36,6 @@ if (isset($_POST["submit"])) {
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Portfolio form</title>
-        <link rel="stylesheet" href="form.css">
-    </head>
-
-
-    <body>
-        <div class="title">
-            <h2>
-                    Portfolio 入力Form　<br />
-            </h2>
-        </div>
-        
-        
-    </body>
-
-
-
-</html>
-
-<!DOCTYPE html>
-<html>
 
 <head>
     <meta charset="utf-8">
