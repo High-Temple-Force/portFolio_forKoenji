@@ -19,12 +19,12 @@ if (isset($_POST["login"])) {
 
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            $cmd = 'SELECT * FROM t_master;';
+            $cmd = 'SELECT * FROM t_master WHERE id =' .$userid .' ;';
             foreach($pdo->query($cmd) as $row){
                 $dbuserid = $row['id'];
                 $dbpassword = $row['password'];
             }
-            if ($password==$dbpassword && $userid == $dbuserid) {
+            if ($password==$dbpassword) {
                 session_regenerate_id(true);
                 $_SESSION["NAME"] = "master";
                 header("Location: master.php");  // メイン画面へ遷移
