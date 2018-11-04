@@ -83,20 +83,18 @@ echo $cmd;
                 <div class="tab_content_description">
                     <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
 
-                    <!--ユーザー選択のセレクトボックス-->
-                    <div class="selectuser">
-                        <select name="userdef" size="1" id="selectbox">
-                            <option value="aoki">Takuto</option>
-                            <option value="mori">Hayato</option>
-                            <option value="yokoi">Daiki</option>
-                        </select>
-
-
-                    </div>
                     
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
+                              <!--ユーザー選択のセレクトボックス-->
+                            <div class="selectuser">
+                                <select name="userdef" size="1" id="selectbox">
+                                    <option value="aoki">Takuto</option>
+                                    <option value="mori">Hayato</option>
+                                    <option value="yokoi">Daiki</option>
+                                </select>
+                            </div>  
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>
