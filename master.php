@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="utf-8">
     <title>Koenjineer Portfolio</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="form.css">
 
     ​
 </head>
@@ -68,7 +68,7 @@ if (isset($_POST["submit"])) {
 
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
