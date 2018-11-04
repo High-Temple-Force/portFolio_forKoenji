@@ -59,7 +59,7 @@ if (isset($_POST["login"])) {
             </ul>
         </header>
         <div class="tabs">
-            <div class="tab_content" id="add_content">
+            <div>
                 <form id="loginForm" name="loginForm" action="" method="POST">
                     
                         
