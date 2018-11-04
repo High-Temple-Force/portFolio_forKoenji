@@ -49,12 +49,10 @@ if (isset($_POST["submit"])) {
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
 
         <header class="header">
-            <h1>Koenjineer Portfolio　edit</h1>
+            <h1>Koenjineer Portfolio edit</h1>
             <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="form.html">Login</a></li>
+                <li><a class="active" href="../index.html">Home</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </header>
 
