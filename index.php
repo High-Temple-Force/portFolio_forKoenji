@@ -60,8 +60,8 @@
                             foreach($product_aoki as $p){
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -78,8 +78,8 @@
                             foreach($product_mori as $p){
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -96,8 +96,8 @@
                             foreach($product_yokoi as $p){
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
