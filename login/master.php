@@ -84,7 +84,7 @@ if (isset($_POST["submit"])) {
 
                     <!--ユーザー選択のセレクトボックス-->
                     <div class="selectuser">
-                        <select name="userdef" size="3" id="selectbox">
+                        <select name="userdef" size="1" id="selectbox">
                             <option value="aoki">Takuto</option>
                             <option value="mori">Hayato</option>
                             <option value="yokoi">Daiki</option>
