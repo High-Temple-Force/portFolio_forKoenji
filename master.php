@@ -5,6 +5,7 @@ if (!isset($_SESSION["NAME"])) {
     header("Location: logout.php");
     exit;
 }
+$errorMessage = "";
 
 if (isset($_POST["submit"])) {
     if (empty($_POST["name"])) {  // emptyは値が空のとき
