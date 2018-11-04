@@ -61,7 +61,7 @@
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -79,7 +79,7 @@
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -97,7 +97,7 @@
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">掲示板サイト</a>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '</h5>';
                                 print '</div>';
                             }
