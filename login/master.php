@@ -162,6 +162,7 @@ if (isset($_POST["submit"])) {
                     </div>
                 </div>
             </div>
+            <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
     </body>
 </html>
