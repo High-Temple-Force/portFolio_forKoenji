@@ -37,34 +37,34 @@ if (isset($_POST["submit"])) {
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Koenjineer Portfolio</title>
-    <link rel="stylesheet" href="form.css">
+    <head>
+        <meta charset="utf-8">
+        <title>Koenjineer Portfolio</title>
+        <link rel="stylesheet" href="main.css">
 
-    ​
-</head>
+        ​
+    </head>
 
-<body>
-  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
+    <body>
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
 
-    <header class="header">
-        <h1>Koenjineer Portfolio　edit</h1>
-        <ul>
-            <li><a class="active" href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="form.html">Login</a></li>
-        </ul>
-    </header>
+        <header class="header">
+            <h1>Koenjineer Portfolio　edit</h1>
+            <ul>
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="form.html">Login</a></li>
+            </ul>
+        </header>
 
-    <div class="tabs">
+        <div class="tabs">
 
-        <input id="add" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="add">新規追加</label>
-        <input id="change" type="radio" name="tab_item" >
-        <label class="tab_item" for="change">プロダクト内容変更</label>
-        
+            <input id="add" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="add">新規追加</label>
+            <input id="change" type="radio" name="tab_item" >
+            <label class="tab_item" for="change">プロダクト内容変更</label>
+            
 
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
@@ -115,10 +115,6 @@ if (isset($_POST["submit"])) {
                     
                 </div>
             </div>
-
-            
-            <script type="text/javascript" src="./onmouse-1.js" charset="utf-8"></script>
-    </div>
-</body>
-
+        </div>
+    </body>
 </html>
