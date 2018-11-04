@@ -7,7 +7,7 @@ var usr_name = "root";  //mysqlユーザーネーム
 var usr_pass = "kourakU";   //ユーザーパスワード
 var db_name = "testdatabase";   //DB名前
 var table_name = "userdata";    //扱うテーブルネーム
-
+    
 //require
 var mysql = require('mysql');
 

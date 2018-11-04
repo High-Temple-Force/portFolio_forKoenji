@@ -21,3 +21,11 @@ p_number integer not null auto_increment primary key,
 p_title varchar(256) not null,
 p_text varchar(256) not null,
 p_url varchar(256) not null);
+
+create table t_u_product
+(member_id integer default 4 not null,
+member_name varchar(256) default "umegatani" not null,
+p_number integer not null auto_increment primary key,
+p_title varchar(256) not null,
+p_text varchar(256) not null,
+p_url varchar(256) not null);
