@@ -1,6 +1,4 @@
 /*タブ切り替え全体のスタイル*/
-
-
 header {
     margin: 0px 0px;
     padding-bottom: 0px;
@@ -13,7 +11,7 @@ header {
     border-right: solid 1px #d9d9d9;
     width: 100% ;
     background-color: #fafafa;
-    float: left;
+    float: right;
     display:  table-cell; 
     vertical-align:  middle;
     /*background: linear-gradient(-135deg, #555555, white);*/
@@ -52,8 +50,8 @@ li {
 
 .tabs {
     margin-top: 50px;
-    padding-bottom: 20px;
-    border-bottom: solid 1px #d9d9d9;
+    /*padding-bottom: 20px;*/
+    /*border-bottom: solid 1px #d9d9d9;*/
     background-color: #fafafa;
     box-shadow: 0 0 8px #fafafa;
     width: 100%;
