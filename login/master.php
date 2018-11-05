@@ -74,7 +74,6 @@ if ( !empty($_POST["confirm"])) {
 } elseif ( !empty($_POST["btn_submit"])) {
     $page_flag = 2; //追加送信後Page
 }
-
 ?>
 
 
@@ -264,8 +263,11 @@ if ( !empty($_POST["confirm"])) {
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<p class="delete">編集</p>';
+                                print '<p class="delete">削除</p>';
                                 print '</h5>';
                                 print '</div>';
+                                
                             }
                         ?>
 
