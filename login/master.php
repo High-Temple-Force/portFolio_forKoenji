@@ -76,6 +76,9 @@ if (isset($_POST["confirm"])) {
 ?>
 
 
+
+
+<!--ここからHTML-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,9 +87,9 @@ if (isset($_POST["confirm"])) {
         <link rel="stylesheet" href="main.css">
     </head>
 
+
     <body>
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
-
         <header class="header">
             <h1>Koenjineer Portfolio edit logined by <?php print $name; ?></h1>
             <ul>
@@ -97,6 +100,13 @@ if (isset($_POST["confirm"])) {
 
     <!--追加内容確認ページ、page_flag=１-->
         <?php if ($page_flag === 1): ?>
+            <div class="tabs">
+            <input id="add" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="add">新規追加</label>
+            <input id="change" type="radio" name="tab_item" >
+            <label class="tab_item" for="change">プロダクト内容変更</label>
+            <div class="tab_content" id="add_content">
+            <div class="tab_content_description">
             <form action="" method="POST">
                 <div class="confirm">
                     <h2>以下の入力内容でよろしいですか？ <br/></h2>
@@ -131,7 +141,7 @@ if (isset($_POST["confirm"])) {
             <label class="tab_item" for="change">プロダクト内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars(detectblank(), ENT_QUOTES); ?></font></div>
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
 
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
