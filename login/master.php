@@ -37,45 +37,42 @@ if ($name == "takuto") {
     }
 } 
 
-//入力値の空白エラー処理を関数化
-//引数にはPOSTの値入れる
-function detectblank($inpost = "confirm") {
-    if (isset($_POST[$inpost])) {
-        if (empty($_POST["name"])) {  // emptyは値が空のとき
-            $Message = 'タイトルが未入力です。';
-        } else if (empty($_POST["text"])) {
-            $Message = '説明文が未入力です。';
-        } else if (empty($_POST["link"])) {
-            $Message = 'リンクが未入力です。';
-        } else if (empty($_POST["userdef"])) {
-            $Message = 'ユーザーが指定されていません。';
-        }
-        if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
-            $title = $_POST["name"];
-            $text = $_POST["text"];
-            $link = $_POST["link"];
-            //ユーザー選択
-            try {
-                $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-                if ($name == "takuto") {  
-                    $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
-                        ("' .$title .'","' .$text .'","' .$link .'");';
-                } elseif ($name == "hayato") {
-                    $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
-                        ("' .$title .'","' .$text .'","' .$link .'");';
-                } elseif ($name == "daiki") {
-                    $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
-                        ("' .$title .'","' .$text .'","' .$link .'");';
-                } 
-                $pdo->query($cmd);
-                $Message = '登録が完了しました。';
-            } catch (PDOException $e) {
-                $Message = 'データベースエラー';
-            }
+
+//入力エラー確認
+if (isset($_POST["confirm"])) {
+    if (empty($_POST["name"])) {  // emptyは値が空のとき
+        $Message = 'タイトルが未入力です。';
+    } else if (empty($_POST["text"])) {
+        $Message = '説明文が未入力です。';
+    } else if (empty($_POST["link"])) {
+        $Message = 'リンクが未入力です。';
+    } else if (empty($_POST["userdef"])) {
+        $Message = 'ユーザーが指定されていません。';
+    }
+    if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
+        $title = $_POST["name"];
+        $text = $_POST["text"];
+        $link = $_POST["link"];
+        //ユーザー選択
+        try {
+            $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+            if ($name == "takuto") {  
+                $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } elseif ($name == "hayato") {
+                $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } elseif ($name == "daiki") {
+                $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
+                    ("' .$title .'","' .$text .'","' .$link .'");';
+            } 
+            $pdo->query($cmd);
+            $Message = '登録が完了しました。';
+        } catch (PDOException $e) {
+            $Message = 'データベースエラー';
         }
     }
-
-} 
+}
 
 ?>
 
