@@ -8,7 +8,7 @@ if (!isset($_SESSION["NAME"])) {
 
 //ページ状態変数の定義と初期化
 $page_flag = 0;
-if ( !empty($_POST[""]) ) {
+if ( !empty($_POST[""])) {
     $page_flag = 1;
 } elseif ( !empty($_POST[""])) {
     $page_flag = 2;
@@ -123,13 +123,14 @@ if (isset($_POST["submit"])) {
 
         <?php elseif ( $page_flag === 2 ): ?>
             <div class="tabs">
-
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
             <label class="tab_item" for="change">プロダクト内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
@@ -186,7 +187,6 @@ if (isset($_POST["submit"])) {
                                 print '</div>';
                             }
                         ?>
-
                     </div>
                 </div>
             </div>
@@ -204,14 +204,9 @@ if (isset($_POST["submit"])) {
 
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
-
-                    
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
-                            <!--ユーザー選択のセレクトボックス-->
-                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>
@@ -268,6 +263,7 @@ if (isset($_POST["submit"])) {
                 </div>
             </div>
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
+            <?php endif; ?>
 
     </body>
 </html>
