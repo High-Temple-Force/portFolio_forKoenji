@@ -8,9 +8,17 @@ if (!isset($_SESSION["NAME"])) {
 $Message = "";
 
 
+//変数の初期化
+$page_flag = 0;
+if( !empty($_POST["confirm"])) {
+    $page_flag = 1;
+} elseif ( !empty($_POST["submit"])) {
+    $page_flag = 2;
+}
 
 
-if (isset($_POST["submit"])) {
+
+if (isset($_POST["submit"])) { //ここも変える
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
@@ -46,7 +54,7 @@ if (isset($_POST["submit"])) {
         }
     }
 }
-print $_POST["userdef"];
+
 ?>
 
 <!DOCTYPE html>
@@ -79,10 +87,35 @@ print $_POST["userdef"];
             <label class="tab_item" for="change">プロダクト内容変更</label>
             
 
+            <!--この辺編集するよー！-->
+            <!--確認ページの処理、 -->
+            <?php if($page_flag ===1) : ?>
+            <form method="post" action="">
+                <div class="element_wrap">
+                    <label>タイトル</label>
+                    <p><?php echo $_POST["name"]; ?></p>
+
+                </div>
+                <div class="element_wrap">
+                    <label>説明文</label>
+                    <p><?php echo $_POST["text"]; ?></p>
+                </div>
+                <div class="element_wrap">
+                    <label>リンクURL</label>
+                    <p><?php echo $_POST["link"]; ?></p>
+                </div>
+                <input type="submit" name="back" value="戻る">
+                <input type="submit" name="submit" value="送信">
+                
+            <?php elseif ( $page_flag === 2 ): ?>
+            <!--ここ、確認後の処理入れる-->
+            <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+
+
+            <?php else: ?>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
-
+                    
                     
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
@@ -123,7 +156,7 @@ print $_POST["userdef"];
                             
                             <div class="submit">
                                 <p>
-                                    <input type="submit" name="submit" value="送信">
+                                    <input type="submit" name="confirm" value="追加内容を確認する">
                                 </p>
                             </div>  
                         </form>    
@@ -131,7 +164,7 @@ print $_POST["userdef"];
                     </div>
                 </div>
             </div>
-
+        <?php endif; ?>
 
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
