@@ -39,7 +39,7 @@ if ($name == "takuto") {
 
 //入力値の空白エラー処理を関数化
 //引数にはPOSTの値入れる
-function detectblank($inpost = "btn_submit") {
+function detectblank($inpost = "confirm") {
     if (isset($_POST[$inpost])) {
         if (empty($_POST["name"])) {  // emptyは値が空のとき
             $Message = 'タイトルが未入力です。';
