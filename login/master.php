@@ -10,7 +10,48 @@ if (!isset($_SESSION["NAME"])) {
 //ページ状態変数の定義と初期化
 $page_flag = 0; //初期状態Page
 if ( !empty($_POST["confirm"])) {
-    $page_flag = 1; //追加内容確認Page
+    //入力エラー確認
+    if (empty($_POST["name"])) {  // emptyは値が空のとき
+        $Message = 'タイトルが未入力です。';
+        $page_flag = 2;
+    } else if (empty($_POST["text"])) {
+        $Message = '説明文が未入力です。';
+        $page_flag = 2;
+    } else if (empty($_POST["link"])) {
+        $Message = 'リンクが未入力です。';
+        $page_flag = 2;
+    } else if (empty($_POST["userdef"])) {
+        $Message = 'ユーザーが指定されていません。';
+        $page_flag = 2;
+    } else { 
+        //入力エラーが無かった場合
+        //入力値のDB登録
+        if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
+            $title = $_POST["name"];
+            $text = $_POST["text"];
+            $link = $_POST["link"];
+            //ユーザー選択
+            try {
+                $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+                if ($name == "takuto") {  
+                    $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } elseif ($name == "hayato") {
+                    $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } elseif ($name == "daiki") {
+                    $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } 
+                $pdo->query($cmd);
+                $Message = '登録が完了しました。';
+            } catch (PDOException $e) {
+                $Message = 'データベースエラー';
+            }
+        }
+
+        $page_flag = 1; //追加内容確認ページへ移行
+    } 
 } elseif ( !empty($_POST["btn_submit"])) {
     $page_flag = 2; //追加送信後Page
 }
@@ -36,44 +77,6 @@ if ($name == "takuto") {
         $product[] = $row;
     }
 } 
-
-
-//入力エラー確認
-if (isset($_POST["confirm"])) {
-    if (empty($_POST["name"])) {  // emptyは値が空のとき
-        $Message = 'タイトルが未入力です。';
-    } else if (empty($_POST["text"])) {
-        $Message = '説明文が未入力です。';
-    } else if (empty($_POST["link"])) {
-        $Message = 'リンクが未入力です。';
-    } else if (empty($_POST["userdef"])) {
-        $Message = 'ユーザーが指定されていません。';
-    }
-    if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
-        $title = $_POST["name"];
-        $text = $_POST["text"];
-        $link = $_POST["link"];
-        //ユーザー選択
-        try {
-            $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            if ($name == "takuto") {  
-                $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "hayato") {
-                $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "daiki") {
-                $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } 
-            $pdo->query($cmd);
-            $Message = '登録が完了しました。';
-        } catch (PDOException $e) {
-            $Message = 'データベースエラー';
-        }
-    }
-}
-
 ?>
 
 
@@ -128,7 +131,7 @@ if (isset($_POST["confirm"])) {
             <label class="tab_item" for="change">プロダクト内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars(detectblank(), ENT_QUOTES); ?></font></div>
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
 
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
