@@ -6,12 +6,13 @@ if (!isset($_SESSION["NAME"])) {
     exit;
 }
 
+
 //ページ状態変数の定義と初期化
-$page_flag = 0;
-if ( !empty($_POST[""])) {
-    $page_flag = 1;
-} elseif ( !empty($_POST[""])) {
-    $page_flag = 2;
+$page_flag = 0; //初期状態Page
+if ( !empty($_POST["confirm"])) {
+    $page_flag = 1; //追加内容確認Page
+} elseif ( !empty($_POST["btn_submit"])) {
+    $page_flag = 2; //追加送信後Page
 }
 
 
@@ -37,9 +38,7 @@ if ($name == "takuto") {
 } 
 
 
-
-
-if (isset($_POST["submit"])) {
+if (isset($_POST["btn_submit"])) {
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
@@ -79,13 +78,10 @@ if (isset($_POST["submit"])) {
 
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <title>Koenjineer Portfolio</title>
         <link rel="stylesheet" href="main.css">
-
-        ​
     </head>
 
     <body>
@@ -98,7 +94,7 @@ if (isset($_POST["submit"])) {
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </header>
-
+    <!--追加内容確認ページ-->
         <?php if ($page_flag === 1): ?>
             <form action="" method="POST">
                 <div class="form">
@@ -121,6 +117,8 @@ if (isset($_POST["submit"])) {
                 <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
             </form>
 
+
+    <!--追加内容送信後ページ-->
         <?php elseif ( $page_flag === 2 ): ?>
             <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
@@ -164,7 +162,7 @@ if (isset($_POST["submit"])) {
                             
                             <div class="submit">
                                 <p>
-                                    <input type="submit" name="submit" value="送信">
+                                    <input type="submit" name="submit" value="内容を確認する">
                                 </p>
                             </div>  
                         </form>    
@@ -172,7 +170,6 @@ if (isset($_POST["submit"])) {
                     </div>
                 </div>
             </div>
-
 
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
@@ -193,14 +190,13 @@ if (isset($_POST["submit"])) {
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
 
-        <?php else: ?>
+    <!--初期状態ページ-->
+        <?php else: ?>　
             <div class="tabs">
-
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
             <label class="tab_item" for="change">プロダクト内容変更</label>
-
 
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
@@ -220,13 +216,11 @@ if (isset($_POST["submit"])) {
                                 <p>
                                     プロダクトの説明文を入力してください。<br />
                                     <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                    
                                 </p>
                             </div>
 
                             <div class="link">
                                 <h3>Link : </h3>
-
                                 <p>
                                     プロダクトのURLを入力してください。 <br />
                                     <textarea name="link" rows="1" cols="55"></textarea><br /><br />
@@ -235,7 +229,7 @@ if (isset($_POST["submit"])) {
                             
                             <div class="submit">
                                 <p>
-                                    <input type="submit" name="submit" value="送信">
+                                    <input type="submit" name="confirm" value="追加内容を確認する">
                                 </p>
                             </div>  
                         </form>    
@@ -263,7 +257,6 @@ if (isset($_POST["submit"])) {
                 </div>
             </div>
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
-            <?php endif; ?>
-
+        <?php endif; ?>
     </body>
 </html>
