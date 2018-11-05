@@ -10,7 +10,7 @@ header {
     border-right: solid 1px #d9d9d9;
     width: 100% ;
     background-color: #fafafa;
-    float: left;
+    float: right;
     display:  table-cell; 
     vertical-align:  middle;
     /*background: linear-gradient(-135deg, #555555, white);*/
@@ -48,8 +48,8 @@ li {
 
 
 .tabs {
-    padding-bottom: 20px;
-    border: solid 1px #d9d9d9;
+    /*padding-bottom: 20px;*/
+    border-top: solid 1px #d9d9d9;
     background-color: #fafafa;
     box-shadow: 0 0 8px #fafafa;
     width: 100%;
@@ -75,7 +75,7 @@ li {
     display: block;
     float: left;
     text-align: center;
-    /*font-weight: bold;*/
+    font-weight: bold;
     transition: all 0.2s ease;
 }
 .tab_item:hover {
