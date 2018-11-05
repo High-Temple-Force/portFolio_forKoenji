@@ -7,14 +7,6 @@ if (!isset($_SESSION["NAME"])) {
 }
 
 
-//ページ状態変数の定義と初期化
-$page_flag = 0; //初期状態Page
-if ( !empty($_POST["confirm"])) {
-    $page_flag = 1; //追加内容確認Page
-} elseif ( !empty($_POST["btn_submit"])) {
-    $page_flag = 2; //追加送信後Page
-}
-
 //セッション管理処理
 $Message = "";
 $name = $_SESSION["NAME"];
@@ -39,7 +31,7 @@ if ($name == "takuto") {
 
 
 //入力値確認処理
-if (isset($_POST["confirm"])) {
+if (isset($_POST["btn_submit"])) {
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
@@ -73,6 +65,16 @@ if (isset($_POST["confirm"])) {
         }
     }
 }
+
+
+//ページ状態変数の定義と初期化
+$page_flag = 0; //初期状態Page
+if ( !empty($_POST["confirm"])) {
+    $page_flag = 1; //追加内容確認Page
+} elseif ( !empty($_POST["btn_submit"])) {
+    $page_flag = 2; //追加送信後Page
+}
+
 ?>
 
 
