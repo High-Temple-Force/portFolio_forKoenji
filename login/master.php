@@ -5,6 +5,16 @@ if (!isset($_SESSION["NAME"])) {
     header("Location: logout.php");
     exit;
 }
+
+//ページ状態変数の定義と初期化
+$page_flag = 0;
+if ( !empty($_POST[""]) ) {
+    $page_flag = 1;
+} elseif ( !empty($_POST[""])) {
+    $page_flag = 2;
+}
+
+
 $Message = "";
 $name = $_SESSION["NAME"];
 $product = Array();
@@ -89,19 +99,37 @@ if (isset($_POST["submit"])) {
             </ul>
         </header>
 
-        <div class="tabs">
+        <?php if ($page_flag === 1): ?>
+            <form action="" method="POST">
+                <div class="form">
+                    <h3>Product Name : <br /></h3>
+                    <p><?php echo $_POST["name"];?> <br/></p>
+                </div>
+                <div class="form">
+                    <h3>Description : <br /></h3>
+                    <p><?php echo $_POST["text"]?> <br/></p>
+                </div>
+                <div class="form">
+                    <h3>Link : <br /></h3>
+                    <p><?php echo $_POST["link"]?> <br/></p>
+                </div>
+
+                <input type="submit" name="btn_back" value="戻る">
+                <input type="submit" name="btn_submit" value="送信">
+                <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
+                <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
+                <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
+            </form>
+
+        <?php elseif ( $page_flag === 2 ): ?>
+            <div class="tabs">
 
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
             <label class="tab_item" for="change">プロダクト内容変更</label>
-            
-
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
-
-                    
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">
@@ -164,5 +192,82 @@ if (isset($_POST["submit"])) {
             </div>
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
+
+        <?php else: ?>
+            <div class="tabs">
+
+            <input id="add" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="add">新規追加</label>
+            <input id="change" type="radio" name="tab_item" >
+            <label class="tab_item" for="change">プロダクト内容変更</label>
+
+
+            <div class="tab_content" id="add_content">
+                <div class="tab_content_description">
+                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+
+                    
+                    <div class="form">
+                        <!--ここに、アクションのタイプ記入-->
+                        <form action="" method="POST">
+                            <!--ユーザー選択のセレクトボックス-->
+                            
+                            <div class="name">
+                                <h3><br />Product Name : </h3>
+                                <p>
+                                    プロダクトのタイトルを入力してください。<br />  
+                                        <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <h3>Description : </h3>
+                                <p>
+                                    プロダクトの説明文を入力してください。<br />
+                                    <textarea name="text" rows="6" cols="55"></textarea><br /><br />
+                    
+                                </p>
+                            </div>
+
+                            <div class="link">
+                                <h3>Link : </h3>
+
+                                <p>
+                                    プロダクトのURLを入力してください。 <br />
+                                    <textarea name="link" rows="1" cols="55"></textarea><br /><br />
+                                </p>
+                            </div>
+                            
+                            <div class="submit">
+                                <p>
+                                    <input type="submit" name="submit" value="送信">
+                                </p>
+                            </div>  
+                        </form>    
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab_content" id="change_content">
+                <div class="tab_content_description">
+                    <div class="flex">
+                        <?php
+                            foreach($product as $p){
+                                print '<div class="col">';
+                                print '<h5 class="his-content">' .$p[0] .'<br>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '</h5>';
+                                print '</div>';
+                            }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
+
     </body>
 </html>
