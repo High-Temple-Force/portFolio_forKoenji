@@ -162,7 +162,7 @@ if (isset($_POST["btn_submit"])) {
                             
                             <div class="submit">
                                 <p>
-                                    <input type="submit" name="submit" value="内容を確認する">
+                                    <input type="submit" name="confirm" value="内容を確認する">
                                 </p>
                             </div>  
                         </form>    
@@ -188,6 +188,7 @@ if (isset($_POST["btn_submit"])) {
                 </div>
             </div>
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
+            
         </div>
 
     <!--初期状態ページ-->
