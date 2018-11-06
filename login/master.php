@@ -31,7 +31,7 @@ if ($name == "takuto") {
 
 
 //入力値確認処理
-if (isset($_POST["btn_submit"])) {
+if (isset($_POST["confirm"])) {
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
