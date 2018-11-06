@@ -42,7 +42,8 @@ if (isset($_POST["confirm"])) {
         $Message = 'ユーザーが指定されていません。';
     }
     $page_flag = 2; //追加内容確認Page
-} elseif ( !empty($_POST["btn_submit"])) {
+} 
+if (isset($_POST["btn_submit"])) {
     $page_flag = 1; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
