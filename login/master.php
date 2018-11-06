@@ -41,6 +41,9 @@ if (isset($_POST["confirm"])) {
     } else if (empty($_POST["userdef"])) {
         $Message = 'ユーザーが指定されていません。';
     }
+    $page_flag = 2; //追加内容確認Page
+} elseif ( !empty($_POST["btn_submit"])) {
+    $page_flag = 1; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -64,15 +67,6 @@ if (isset($_POST["confirm"])) {
             $Message = 'データベースエラー';
         }
     }
-}
-
-
-//ページ状態変数の定義と初期化
-$page_flag = 0; //初期状態Page
-if ( !empty($_POST["confirm"])) {
-    $page_flag = 2; //追加内容確認Page
-} elseif ( !empty($_POST["btn_submit"])) {
-    $page_flag = 1; //追加送信後Page
 }
 
 ?>
