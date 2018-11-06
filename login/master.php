@@ -31,7 +31,9 @@ if ($name == "takuto") {
 
 
 //入力値確認処理
+$page_flag = 0;
 if (isset($_POST["confirm"])) {
+    $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
     } else if (empty($_POST["text"])) {
@@ -41,10 +43,12 @@ if (isset($_POST["confirm"])) {
     } else if (empty($_POST["userdef"])) {
         $Message = 'ユーザーが指定されていません。';
     }
-    $page_flag = 2; //追加内容確認Page
+    if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
+        $page_flag = 1; //追加内容確認Page
+    }
 } 
 if (isset($_POST["btn_submit"])) {
-    $page_flag = 1; //追加送信後Page
+    $page_flag = 0; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
