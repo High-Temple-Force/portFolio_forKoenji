@@ -43,7 +43,7 @@ if (isset($_POST["confirm"])) {
     }
     $page_flag = 2; //追加内容確認Page
 } 
-/*if (isset($_POST["btn_submit"])) {
+if (isset($_POST["btn_submit"])) {
     $page_flag = 1; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
@@ -68,7 +68,7 @@ if (isset($_POST["confirm"])) {
             $Message = 'データベースエラー';
         }
     }
-}*/
+}
 
 ?>
 
