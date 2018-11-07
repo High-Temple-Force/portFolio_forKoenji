@@ -75,43 +75,6 @@ if (isset($_POST["btn_submit"])) {
 }
 
 
-// 削除ボタンが押された場合
-function del_btn() {
-    if (isset($_POST["btn_delete"])) {
-        $Message = "";
-        $name = $_SESSION["NAME"];
-        $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-        //takuto
-        if ($name == "takuto") { 
-            try {
-                $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
-                $cmd_drop = 'alter table t_a_product drop column p_number;';
-                $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
-                $cmd_auto = 'alter table t_a_product auto_increment =1;';
-                $pdo->query($cmd) ;
-                $pdo->query($cmd_drop) ;
-                $pdo->query($cmd_add) ;
-                $pdo->query($cmd_auto) ;
-                $Message = "削除しました。";
-            } catch (PDOException $e){
-                $Message = "データベースエラー";
-            }
-        //hayato
-        } elseif ($name == "hayato") {
-            $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
-            foreach($pdo->query($cmd) as $row){
-                $product[] = $row;
-            }
-        //daiki
-        } elseif ($name == "daiki") {
-            $cmd = 'DELETE p_title,p_text,p_url from t_y_product;';
-            foreach($pdo->query($cmd) as $row){
-                $product[] = $row;
-            }
-        } 
-        $page_flag = 2;
-    }
-}
 ?>
 
 
@@ -233,14 +196,47 @@ function del_btn() {
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<p hidden class="p_number">'.$p[3] .' </p>';
                                 print '<div class="form">';
-                                print '<form method="POST">';
+                                print '<form action="" method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
                                 print '<input type="submit" name="btn_delete" value="削除">';
                                 print '</form>';
                                 print '</div>';
                                 print '</h5>';
                                 print '</div>';
-                                del_btn();
+                                if (isset($_POST["btn_delete"])) {
+                                    $Message = "";
+                                    $name = $_SESSION["NAME"];
+                                    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+                                    //takuto
+                                    if ($name == "takuto") { 
+                                        try {
+                                            $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
+                                            $cmd_drop = 'alter table t_a_product drop column p_number;';
+                                            $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
+                                            $cmd_auto = 'alter table t_a_product auto_increment =1;';
+                                            $pdo->query($cmd) ;
+                                            $pdo->query($cmd_drop) ;
+                                            $pdo->query($cmd_add) ;
+                                            $pdo->query($cmd_auto) ;
+                                            $Message = "削除しました。";
+                                        } catch (PDOException $e){
+                                            $Message = "データベースエラー";
+                                        }
+                                    //hayato
+                                    } elseif ($name == "hayato") {
+                                        $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
+                                        foreach($pdo->query($cmd) as $row){
+                                            $product[] = $row;
+                                        }
+                                    //daiki
+                                    } elseif ($name == "daiki") {
+                                        $cmd = 'DELETE p_title,p_text,p_url from t_y_product;';
+                                        foreach($pdo->query($cmd) as $row){
+                                            $product[] = $row;
+                                        }
+                                    } 
+                                    $page_flag = 2;
+                                }
                             }
                         ?>
                     </div>
@@ -316,7 +312,40 @@ function del_btn() {
                                 print '</div>';
                                 print '</h5>';
                                 print '</div>';
-                                del_btn();
+                                if (isset($_POST["btn_delete"])) {
+                                    $Message = "";
+                                    $name = $_SESSION["NAME"];
+                                    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+                                    //takuto
+                                    if ($name == "takuto") { 
+                                        try {
+                                            $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
+                                            $cmd_drop = 'alter table t_a_product drop column p_number;';
+                                            $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
+                                            $cmd_auto = 'alter table t_a_product auto_increment =1;';
+                                            $pdo->query($cmd) ;
+                                            $pdo->query($cmd_drop) ;
+                                            $pdo->query($cmd_add) ;
+                                            $pdo->query($cmd_auto) ;
+                                            $Message = "削除しました。";
+                                        } catch (PDOException $e){
+                                            $Message = "データベースエラー";
+                                        }
+                                    //hayato
+                                    } elseif ($name == "hayato") {
+                                        $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
+                                        foreach($pdo->query($cmd) as $row){
+                                            $product[] = $row;
+                                        }
+                                    //daiki
+                                    } elseif ($name == "daiki") {
+                                        $cmd = 'DELETE p_title,p_text,p_url from t_y_product;';
+                                        foreach($pdo->query($cmd) as $row){
+                                            $product[] = $row;
+                                        }
+                                    } 
+                                    $page_flag = 2;
+                                }
                             }
                         ?>
 
