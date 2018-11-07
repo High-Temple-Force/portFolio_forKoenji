@@ -160,12 +160,13 @@ input[name="tab_item"] {
 /*削除編集ボタンのスタイル*/
 input[name="btn_edit"] {
     width: 20%;
-    left: 10%;
+    float: left;
     vertical-align:bottom;
+
     
 }
 input[name="btn_delete"] {
     width: 10%;
-    right: 10%;
+    float: right;
     vertical-align: -50%;
 }

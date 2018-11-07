@@ -193,8 +193,10 @@ if ( !empty($_POST["confirm"])) {
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<div class="btn">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
                                 print '<input type="submit" name="btn_delete" value="削除">';
+                                print '</div>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -263,8 +265,10 @@ if ( !empty($_POST["confirm"])) {
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<div class="btn">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
                                 print '<input type="submit" name="btn_delete" value="削除">';
+                                print '</div>';
                                 print '</h5>';
                                 print '</div>';
                                 
