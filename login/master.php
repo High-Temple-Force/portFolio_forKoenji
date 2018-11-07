@@ -253,7 +253,7 @@ if (isset($_POST["btn_delete"])) {
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
-            <label class="tab_item" for="change">プロダクト内容変更</label>
+            <label class="tab_item" for="change">内容変更</label>
 
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
@@ -306,9 +306,11 @@ if (isset($_POST["btn_delete"])) {
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<p hidden class="p_number">'.$p[3] .' </p>';
-                                print '<div class="btn">';
+                                print '<div class="form">';
+                                print '<form method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
                                 print '<input type="submit" name="btn_delete" value="削除">';
+                                print '</form>';
                                 print '</div>';
                                 print '</h5>';
                                 print '</div>';
