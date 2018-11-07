@@ -95,7 +95,7 @@ if (isset($_POST["btn_delete"])) {
             $Message = "削除しました。";
         } catch (PDOException $e){
             $Message = "データベースエラー";
-        }}
+        }
     //hayato
     } elseif ($name == "hayato") {
         $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
@@ -109,10 +109,8 @@ if (isset($_POST["btn_delete"])) {
             $product[] = $row;
         }
     } 
-    $page_flag = 0;
+    $page_flag = 2;
 }
-
-
 ?>
 
 
