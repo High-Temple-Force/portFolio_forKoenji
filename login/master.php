@@ -93,7 +93,6 @@ function del_btn() {
     } else {
         $Message = "セッションエラー" ;
     }
-    
     try {
         //DB項目削除後に、もう一度autoincreを振りなおしている
         $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$product[3].';';
@@ -157,11 +156,11 @@ function del_btn() {
                 </div>
                 <div class="form">
                     <h3>Description : <br /></h3>
-                    <p><?php echo $_POST["text"]?> <br/></p>
+                    <p><?php echo $_POST["text"];?> <br/></p>
                 </div>
                 <div class="form">
                     <h3>Link : <br /></h3>
-                    <p><?php echo $_POST["link"]?> <br/></p>
+                    <p><?php echo $_POST["link"];?> <br/></p>
                 </div>
 
                 <input type="submit" name="btn_back" value="戻る">
@@ -181,7 +180,7 @@ function del_btn() {
             <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, ENT_QUOTES); ?></font></div>
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, $ENT_QUOTES); ?></font></div>
 
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
@@ -232,7 +231,7 @@ function del_btn() {
                                 print '<h5 class="his-content">' .$product[0] .'<br>';
                                 print '<p class="content-text">' .$product[1] .'</p>';
                                 print '<a href="' .$product[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$product[3] .' </p>';
+                                print '<p hidden class="p_number">'.$product[3] .'</p>';
                                 print '<div class="form">';
                                 print '<form action="" method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
@@ -245,6 +244,7 @@ function del_btn() {
                                     del_btn();
                                 }
                             }
+                            unset($product);
                         ?>
                     </div>
                 </div>
@@ -321,8 +321,10 @@ function del_btn() {
                                 print '</div>';
                                 if (isset($_POST["btn_delete"])) {
                                     del_btn();
+
                                 }
                             }
+                            unset($product);
                         ?>
 
                     </div>
