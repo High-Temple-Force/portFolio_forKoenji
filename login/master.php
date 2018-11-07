@@ -104,7 +104,7 @@ function del_btn() {
         $pdo->query($cmd_add) ;
         $pdo->query($cmd_auto) ;
         $Message = "削除しました。";
-    } catch (PDOException $e){
+    } catch (PDOException $e) {
         $Message = "データベースエラー";
     }
     
@@ -180,41 +180,30 @@ function del_btn() {
             <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, $ENT_QUOTES); ?></font></div>
-
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message, $ENT_QUOTES) ;?></font></div>
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
                         <form action="" method="POST">                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
-                                <p>
-                                    プロダクトのタイトルを入力してください。<br />  
+                                <p>プロダクトのタイトルを入力してください。<br />  
                                         <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
                                 </p>
                             </div>
-
                             <div class="text">
                                 <h3>Description : </h3>
-                                <p>
-                                    プロダクトの説明文を入力してください。<br />
+                                <p>プロダクトの説明文を入力してください。<br />
                                     <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                    
                                 </p>
                             </div>
-
                             <div class="link">
                                 <h3>Link : </h3>
-
-                                <p>
-                                    プロダクトのURLを入力してください。 <br />
+                                <p>プロダクトのURLを入力してください。 <br />
                                     <textarea name="link" rows="1" cols="55"></textarea><br /><br />
                                 </p>
                             </div>
-                            
                             <div class="submit">
-                                <p>
-                                    <input type="submit" name="confirm" value="内容を確認する">
-                                </p>
+                                <p>  <input type="submit" name="confirm" value="内容を確認する"></p>
                             </div>  
                         </form>    
 
