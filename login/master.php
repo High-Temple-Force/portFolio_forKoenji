@@ -13,17 +13,17 @@ $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 if ($name == "takuto") {  
-    $cmd = 'SELECT p_title,p_text,p_url from t_a_product;';
+    $cmd = 'SELECT p_title,p_text,p_url,p_number from t_a_product;';
     foreach($pdo->query($cmd) as $row){
         $product[] = $row;
     }
 } elseif ($name == "hayato") {
-    $cmd = 'SELECT p_title,p_text,p_url from t_m_product;';
+    $cmd = 'SELECT p_title,p_text,p_url,p_number from t_m_product;';
     foreach($pdo->query($cmd) as $row){
         $product[] = $row;
     }
 } elseif ($name == "daiki") {
-    $cmd = 'SELECT p_title,p_text,p_url from t_y_product;';
+    $cmd = 'SELECT p_title,p_text,p_url,p_number from t_y_product;';
     foreach($pdo->query($cmd) as $row){
         $product[] = $row;
     }
@@ -74,6 +74,14 @@ if (isset($_POST["btn_submit"])) {
     }
 }
 
+
+//ページ状態変数の定義と初期化
+$page_flag = 0; //初期状態Page
+if ( !empty($_POST["confirm"])) {
+    $page_flag = 1; //追加内容確認Page
+} elseif ( !empty($_POST["btn_submit"])) {
+    $page_flag = 2; //追加送信後Page
+}
 ?>
 
 
@@ -105,7 +113,7 @@ if (isset($_POST["btn_submit"])) {
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
-            <label class="tab_item" for="change">プロダクト内容変更</label>
+            <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
             <div class="tab_content_description">
             <form action="" method="POST">
@@ -146,9 +154,7 @@ if (isset($_POST["btn_submit"])) {
 
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
-                        <form action="" method="POST">
-                              <!--ユーザー選択のセレクトボックス-->
-                            
+                        <form action="" method="POST">                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>
@@ -195,6 +201,12 @@ if (isset($_POST["btn_submit"])) {
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<div class="btn">';
+                                print '<div>'
+                                print '<input type="submit" name="btn_edit" value="編集">';
+                                print '<input type="submit" name="btn_delete" value="削除">';
+                                print '</div>';
+                                print '</div>';
                                 print '</h5>';
                                 print '</div>';
                             }
@@ -263,8 +275,15 @@ if (isset($_POST["btn_submit"])) {
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<div class="btn">';
+                                print '<div>';
+                                print '<input type="submit" name="btn_edit" value="編集">';
+                                print '<input type="submit" name="btn_delete" value="削除">';
+                                print '</div>';
+                                print '</div>';
                                 print '</h5>';
                                 print '</div>';
+                                
                             }
                         ?>
 
