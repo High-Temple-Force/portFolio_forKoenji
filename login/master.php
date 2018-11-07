@@ -95,7 +95,7 @@ if (isset($_POST["btn_delete"])) {
             $Message = "削除しました。";
             
         } catch (PDOException $e){
-            $Message = "データベースエラー"
+            $Message = "データベースエラー";
         }}
     //hayato
     } elseif ($name == "hayato") {
