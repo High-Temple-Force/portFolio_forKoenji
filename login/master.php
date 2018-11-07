@@ -92,20 +92,21 @@ function del_btn() {
         $tablex = "y" ;
     //三人以外はエラー返す
     } else {
-        $Message = "セッションエラー"
+        $Message = "セッションエラー" ;
     }
     try {
-            $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$p[3].';';
-            $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
-            $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
-            $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
-            $pdo->query($cmd) ;
-            $pdo->query($cmd_drop) ;
-            $pdo->query($cmd_add) ;
-            $pdo->query($cmd_auto) ;
-            $Message = "削除しました。";
+        //DB項目削除後に、もう一度autoincreを振りなおしている
+        $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$p[3].';';
+        $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
+        $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
+        $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
+        $pdo->query($cmd) ;
+        $pdo->query($cmd_drop) ;
+        $pdo->query($cmd_add) ;
+        $pdo->query($cmd_auto) ;
+        $Message = "削除しました。";
     } catch (PDOException $e){
-            $Message = "データベースエラー";
+        $Message = "データベースエラー";
     }
     
     $page_flag = 2;
