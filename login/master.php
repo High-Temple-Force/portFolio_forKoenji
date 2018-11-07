@@ -84,7 +84,7 @@ function del_btn() {
         //takuto
         if ($name == "takuto") { 
             try {
-                $cmd = 'DELETE from t_a_product where p_number='.$[3].';';
+                $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
                 $cmd_drop = 'alter table t_a_product drop column p_number;';
                 $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
                 $cmd_auto = 'alter table t_a_product auto_increment =1;';
