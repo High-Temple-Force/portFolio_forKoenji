@@ -105,7 +105,7 @@ if ( !empty($_POST["confirm"])) {
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
             <input id="change" type="radio" name="tab_item" >
-            <label class="tab_item" for="change">プロダクト内容変更</label>
+            <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
             <div class="tab_content_description">
             <form action="" method="POST">
@@ -146,9 +146,7 @@ if ( !empty($_POST["confirm"])) {
 
                     <div class="form">
                         <!--ここに、アクションのタイプ記入-->
-                        <form action="" method="POST">
-                              <!--ユーザー選択のセレクトボックス-->
-                            
+                        <form action="" method="POST">                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>
