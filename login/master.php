@@ -86,7 +86,6 @@ function del_btn() {
     //hayato
     } elseif ($name == "hayato") {
         $tablex = "m" ;
-    }
     //daiki
     } elseif ($name == "daiki") {
         $tablex = "y" ;
@@ -94,6 +93,7 @@ function del_btn() {
     } else {
         $Message = "セッションエラー" ;
     }
+    
     try {
         //DB項目削除後に、もう一度autoincreを振りなおしている
         $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$p[3].';';
