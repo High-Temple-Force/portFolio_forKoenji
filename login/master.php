@@ -75,6 +75,43 @@ if (isset($_POST["btn_submit"])) {
 }
 
 
+// 削除ボタンが押された場合の処理
+function del_btn() {
+    $Message = "";
+    $name = $_SESSION["NAME"];
+    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+    //takuto
+    if ($name == "takuto") { 
+        $tablex = "a" ;
+    //hayato
+    } elseif ($name == "hayato") {
+        $tablex = "m" ;
+    }
+    //daiki
+    } elseif ($name == "daiki") {
+        $tablex = "y" ;
+    //三人以外はエラー返す
+    } else {
+        $Message = "セッションエラー"
+    }
+    try {
+            $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$p[3].';';
+            $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
+            $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
+            $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
+            $pdo->query($cmd) ;
+            $pdo->query($cmd_drop) ;
+            $pdo->query($cmd_add) ;
+            $pdo->query($cmd_auto) ;
+            $Message = "削除しました。";
+    } catch (PDOException $e){
+            $Message = "データベースエラー";
+    }
+    
+    $page_flag = 2;
+
+}
+
 ?>
 
 
@@ -204,38 +241,7 @@ if (isset($_POST["btn_submit"])) {
                                 print '</h5>';
                                 print '</div>';
                                 if (isset($_POST["btn_delete"])) {
-                                    $Message = "";
-                                    $name = $_SESSION["NAME"];
-                                    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-                                    //takuto
-                                    if ($name == "takuto") { 
-                                        try {
-                                            $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
-                                            $cmd_drop = 'alter table t_a_product drop column p_number;';
-                                            $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
-                                            $cmd_auto = 'alter table t_a_product auto_increment =1;';
-                                            $pdo->query($cmd) ;
-                                            $pdo->query($cmd_drop) ;
-                                            $pdo->query($cmd_add) ;
-                                            $pdo->query($cmd_auto) ;
-                                            $Message = "削除しました。";
-                                        } catch (PDOException $e){
-                                            $Message = "データベースエラー";
-                                        }
-                                    //hayato
-                                    } elseif ($name == "hayato") {
-                                        $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
-                                        foreach($pdo->query($cmd) as $row){
-                                            $product[] = $row;
-                                        }
-                                    //daiki
-                                    } elseif ($name == "daiki") {
-                                        $cmd = 'DELETE p_title,p_text,p_url from t_y_product;';
-                                        foreach($pdo->query($cmd) as $row){
-                                            $product[] = $row;
-                                        }
-                                    } 
-                                    $page_flag = 2;
+                                    del_btn();
                                 }
                             }
                         ?>
@@ -313,38 +319,7 @@ if (isset($_POST["btn_submit"])) {
                                 print '</h5>';
                                 print '</div>';
                                 if (isset($_POST["btn_delete"])) {
-                                    $Message = "";
-                                    $name = $_SESSION["NAME"];
-                                    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-                                    //takuto
-                                    if ($name == "takuto") { 
-                                        try {
-                                            $cmd = 'DELETE from t_a_product where p_number='.$p[3].';';
-                                            $cmd_drop = 'alter table t_a_product drop column p_number;';
-                                            $cmd_add = 'alter table t_a_product add p_number int(11) primary key not null auto_increment;';
-                                            $cmd_auto = 'alter table t_a_product auto_increment =1;';
-                                            $pdo->query($cmd) ;
-                                            $pdo->query($cmd_drop) ;
-                                            $pdo->query($cmd_add) ;
-                                            $pdo->query($cmd_auto) ;
-                                            $Message = "削除しました。";
-                                        } catch (PDOException $e){
-                                            $Message = "データベースエラー";
-                                        }
-                                    //hayato
-                                    } elseif ($name == "hayato") {
-                                        $cmd = 'DELETE p_title,p_text,p_url from t_m_product;';
-                                        foreach($pdo->query($cmd) as $row){
-                                            $product[] = $row;
-                                        }
-                                    //daiki
-                                    } elseif ($name == "daiki") {
-                                        $cmd = 'DELETE p_title,p_text,p_url from t_y_product;';
-                                        foreach($pdo->query($cmd) as $row){
-                                            $product[] = $row;
-                                        }
-                                    } 
-                                    $page_flag = 2;
+                                    del_btn();
                                 }
                             }
                         ?>
