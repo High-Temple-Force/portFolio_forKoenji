@@ -73,15 +73,6 @@ if (isset($_POST["btn_submit"])) {
         }
     }
 }
-
-
-//ページ状態変数の定義と初期化
-$page_flag = 0; //初期状態Page
-if ( !empty($_POST["confirm"])) {
-    $page_flag = 1; //追加内容確認Page
-} elseif ( !empty($_POST["btn_submit"])) {
-    $page_flag = 2; //追加送信後Page
-}
 ?>
 
 
