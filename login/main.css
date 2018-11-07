@@ -166,7 +166,6 @@ input[name="btn_edit"] {
     
 }
 input[name="btn_delete"] {
-    width: 10%;
+    width: 20%;
     float: right;
-    vertical-align: -50%;
 }
