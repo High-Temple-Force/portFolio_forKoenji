@@ -227,7 +227,7 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product){
+                            foreach($product) {
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$product[0] .'<br>';
                                 print '<p class="content-text">' .$product[1] .'</p>';
@@ -305,7 +305,7 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product){
+                            foreach($product) {
                                 print '<div class="col">';
                                 print '<h5 class="his-content">' .$product[0] .'<br>';
                                 print '<p class="content-text">' .$product[1] .'</p>';
