@@ -96,7 +96,7 @@ function del_btn() {
     
     try {
         //DB項目削除後に、もう一度autoincreを振りなおしている
-        $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$p[3].';';
+        $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$product[3].';';
         $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
         $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
         $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
@@ -227,12 +227,12 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product as $p){
+                            foreach($product){
                                 print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$p[3] .' </p>';
+                                print '<h5 class="his-content">' .$product[0] .'<br>';
+                                print '<p class="content-text">' .$product[1] .'</p>';
+                                print '<a href="' .$product[2] .'" class="his-link">link</a>';
+                                print '<p hidden class="p_number">'.$product[3] .' </p>';
                                 print '<div class="form">';
                                 print '<form action="" method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
@@ -305,12 +305,12 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product as $p){
+                            foreach($product){
                                 print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$p[3] .' </p>';
+                                print '<h5 class="his-content">' .$product[0] .'<br>';
+                                print '<p class="content-text">' .$product[1] .'</p>';
+                                print '<a href="' .$product[2] .'" class="his-link">link</a>';
+                                print '<p hidden class="p_number">'.$product[3] .' </p>';
                                 print '<div class="form">';
                                 print '<form method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
