@@ -93,7 +93,6 @@ if (isset($_POST["btn_delete"])) {
             $pdo->query($cmd_add) ;
             $pdo->query($cmd_auto) ;
             $Message = "削除しました。";
-            
         } catch (PDOException $e){
             $Message = "データベースエラー";
         }}
@@ -110,6 +109,9 @@ if (isset($_POST["btn_delete"])) {
             $product[] = $row;
         }
     } 
+    $page_flag = 0;
+}
+
 
 ?>
 
