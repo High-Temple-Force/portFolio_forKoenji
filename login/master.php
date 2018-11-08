@@ -248,7 +248,7 @@ function del_btn($arrayvalue) {
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
 
-    <!--初期状態ページ、page_flag = 1-->
+    <!--初期状態ページ、page_flag = 0-->
         <?php else: ?>　
             <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
