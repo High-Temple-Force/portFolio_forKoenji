@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
     } else if (empty($_POST["password"])) {
         $errorMessage = 'パスワードが未入力です。';
     }
-
+ 
     if (!empty($_POST["userid"]) && !empty($_POST["password"])) {
         $userid = $_POST["userid"];
         $password = $_POST["password"];
