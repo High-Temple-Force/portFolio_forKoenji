@@ -76,7 +76,7 @@ if (isset($_POST["btn_submit"])) {
 
 
 // 削除ボタンが押された場合の処理
-function del_btn() {
+function del_btn($arrayvalue) {
     $Message = "";
     $name = $_SESSION["NAME"];
     $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
@@ -94,8 +94,9 @@ function del_btn() {
         $Message = "セッションエラー" ;
     }
     try {
+        //引数は、配列の場所示す
         //DB項目削除後に、もう一度autoincreを振りなおしている
-        $cmd = 'DELETE from t_'.$tablex.'_productwhere p_number='.$product[3].';';
+        $cmd = 'DELETE from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
         $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
         $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
         $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
@@ -215,12 +216,12 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product) {
+                            foreach($product as $p) {
                                 print '<div class="col">';
-                                print '<h5 class="his-content">' .$product[0] .'<br>';
-                                print '<p class="content-text">' .$product[1] .'</p>';
-                                print '<a href="' .$product[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$product[3] .'</p>';
+                                print '<h5 class="his-content">' .$p[0] .'<br>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<p hidden class="p_number">'.$p[3] .'</p>';
                                 print '<div class="form">';
                                 print '<form action="" method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
@@ -230,10 +231,10 @@ function del_btn() {
                                 print '</h5>';
                                 print '</div>';
                                 if (isset($_POST["btn_delete"])) {
-                                    del_btn();
+                                    del_btn($p[3]);
                                 }
                             }
-                            unset($product);
+                            unset($p);
                         ?>
                     </div>
                 </div>
@@ -294,12 +295,12 @@ function del_btn() {
                 <div class="tab_content_description">
                     <div class="flex">
                         <?php
-                            foreach($product) {
+                            foreach($product as $p) {
                                 print '<div class="col">';
-                                print '<h5 class="his-content">' .$product[0] .'<br>';
-                                print '<p class="content-text">' .$product[1] .'</p>';
-                                print '<a href="' .$product[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$product[3] .' </p>';
+                                print '<h5 class="his-content">' .$p[0] .'<br>';
+                                print '<p class="content-text">' .$p[1] .'</p>';
+                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<p hidden class="p_number">'.$p[3] .' </p>';
                                 print '<div class="form">';
                                 print '<form method="POST">';
                                 print '<input type="submit" name="btn_edit" value="編集">';
@@ -309,11 +310,11 @@ function del_btn() {
                                 print '</h5>';
                                 print '</div>';
                                 if (isset($_POST["btn_delete"])) {
-                                    del_btn();
+                                    del_btn($p[3]);
 
                                 }
                             }
-                            unset($product);
+                            unset($p);
                         ?>
 
                     </div>
