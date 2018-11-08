@@ -48,7 +48,7 @@ if (isset($_POST["confirm"])) {
     }
 } 
 if (isset($_POST["btn_submit"])) {
-    $page_flag = 0; //追加送信後Page
+    $page_flag = 1; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -152,34 +152,6 @@ if (isset($_POST["btn_submit"])) {
                             </div>
                             <div class="submit">
                                 <p><input type="submit" name="confirm" value="内容を確認する"></p>
-                            </div>  
-                        </form>    
-                    </div>
-                <?php else: ?>
-                    <div class="form">
-                    <!--ここに、アクションのタイプ記入-->
-                        <form action="" method="POST">
-                            <div class="name">
-                                <h3><br />Product Name : </h3>
-                                <p>プロダクトのタイトルを入力してください。<br />  
-                                    <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="text">
-                                <h3>Description : </h3>
-                                <p>プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="link">
-                                <h3>Link : </h3>
-                                <p>プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            
-                            <div class="submit">
-                                <p><input type="submit" name="confirm" value="追加内容を確認する"></p>
                             </div>  
                         </form>    
                     </div>
