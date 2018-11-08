@@ -8,7 +8,7 @@ if (!isset($_SESSION["NAME"])) {
 
 
 //セッション管理処理
-$Message = "";
+$Message = ""; 
 $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
@@ -55,7 +55,6 @@ if (isset($_POST["btn_submit"])) {
         $link = $_POST["link"];
         //入力値DB登録処理
         try {
-            $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
             if ($name == "takuto") {  
                 $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
                     ("' .$title .'","' .$text .'","' .$link .'");';
@@ -70,6 +69,7 @@ if (isset($_POST["btn_submit"])) {
             $Message = '登録が完了しました。';
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
+            
         }
     }
 }
@@ -93,6 +93,7 @@ function del_btn($arrayvalue) {
     //三人以外はエラー返す
     } else {
         $Message = "セッションエラー" ;
+        return;
     }
     try {
         //引数は、配列の場所示す
@@ -290,8 +291,6 @@ function del_btn($arrayvalue) {
                     </div>
                 </div>
             </div>
-
-
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
                     <div class="flex">
