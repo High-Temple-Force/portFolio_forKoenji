@@ -12,6 +12,8 @@ $Message = "";
 $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+
+//DBの表示、product配列に格納
 if ($name == "takuto") {  
     $cmd = 'SELECT p_title,p_text,p_url,p_number from t_a_product;';
     foreach($pdo->query($cmd) as $row){
@@ -31,7 +33,7 @@ if ($name == "takuto") {
 
 
 //入力値確認処理
-$page_flag = 0;
+$page_flag = 0; //初期ページ
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -48,7 +50,6 @@ if (isset($_POST["confirm"])) {
     }
 } 
 if (isset($_POST["btn_submit"])) {
-    $page_flag = 0; //追加送信後Page
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -71,6 +72,7 @@ if (isset($_POST["btn_submit"])) {
             $Message = 'データベースエラー';
             
         }
+        $page_flag = 2; //追加送信後Page
     }
 }
 
@@ -93,7 +95,8 @@ function del_btn($arrayvalue) {
     //三人以外はエラー返す
     } else {
         $Message = "セッションエラー" ;
-        return;
+        $page_flag = 2;
+        return $page_flag;
     }
     try {
         //引数は、配列の場所示す
@@ -172,6 +175,7 @@ function del_btn($arrayvalue) {
                 <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
                 <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
             </form>
+
 
 
     <!--追加内容送信後ページ、page_flag = 2-->
