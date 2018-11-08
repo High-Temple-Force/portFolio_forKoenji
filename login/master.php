@@ -111,6 +111,7 @@ function del_btn($arrayvalue) {
     }
     $page_flag = 2;
     return $page_flag;
+    return $Message;
 }
 
 ?>
