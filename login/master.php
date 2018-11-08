@@ -77,6 +77,7 @@ if (isset($_POST["btn_submit"])) {
 
 // 削除ボタンが押された場合の処理
 function del_btn($arrayvalue) {
+    global $Message;
     $Message = "";
     $name = $_SESSION["NAME"];
     $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
@@ -108,9 +109,8 @@ function del_btn($arrayvalue) {
     } catch (PDOException $e) {
         $Message = "データベースエラー";
     }
-    
     $page_flag = 2;
-
+    return $page_flag;
 }
 
 ?>
