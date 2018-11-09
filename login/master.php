@@ -227,7 +227,7 @@ function del_btn($arrayvalue) {
                                     print '<h5 class="his-content">' .$p[0] .'<br> </h5>';
                                     print '<p class="content-text">' .$p[1] .'</p>';
                                     print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                    print '<input type="hidden" class="p_number">'.$p[3] .'</p>';
+                                    print '<input type="hidden" class="p_number" value="'.$p[3] .'">';
                                     print '<div class="form">';
                                     print '<form action="" method="POST">';
                                     print '<input type="submit" name="btn_edit" value="編集">';
