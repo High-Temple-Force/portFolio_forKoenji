@@ -107,12 +107,14 @@ function del_btn($arrayvalue) {
         try {
             //引数は、配列の場所示す
             //DB項目削除後に、もう一度autoincreを振りなおしている
+            $cmd_select = 'SELECT from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
             $cmd = 'DELETE from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
             $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
             $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
             $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
-            $query_1 = $pdo->prepare($cmd) ;
-            $query_1->execute();
+            $query_0 = $pdo->prepare($cmd_select);
+            $query_0->execute();
+            $pdo->query($cmd);
             $query_2 = $pdo->prepare($cmd_drop) ;
             $query_2->execute();
             $query_3 = $pdo->prepare($cmd_add) ;
