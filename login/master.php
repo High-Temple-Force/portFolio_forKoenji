@@ -38,11 +38,11 @@ if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
         $Message = 'タイトルが未入力です。';
-    } else if (empty($_POST["text"])) {
+    } elseif (empty($_POST["text"])) {
         $Message = '説明文が未入力です。';
-    } else if (empty($_POST["link"])) {
+    } elseif (empty($_POST["link"])) {
         $Message = 'リンクが未入力です。';
-    } else if (empty($_POST["userdef"])) {
+    } elseif (empty($_POST["userdef"])) {
         $Message = 'ユーザーが指定されていません。';
     } else {
         $page_flag = 1; //追加内容確認Page
