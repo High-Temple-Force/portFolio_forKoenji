@@ -50,7 +50,7 @@ if (isset($_POST["confirm"])) {
 } 
 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -79,7 +79,7 @@ if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 // 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
         global $Message;
         $Message = "";
         $name = $_SESSION["NAME"];
@@ -125,7 +125,6 @@ function del_btn($arrayvalue) {
 
 
 
-
 <!--ここからHTML-->
 <!DOCTYPE html>
 <html>
@@ -145,7 +144,7 @@ function del_btn($arrayvalue) {
         </header>
 
         <!--追加内容確認ページ、page_flag=１-->
-        <?php if ($page_flag == 1): ?>
+        <?php if ($page_flag == 1) : ?>
             <div class="tabs">
                 <div class="tab_content" id="add_content">
                     <div class="tab_content_description">
@@ -155,15 +154,15 @@ function del_btn($arrayvalue) {
                             </div>
                             <div class="form">
                                 <h3>Product Name : <br /></h3>
-                                <p><?php echo $_POST["name"];?> <br/></p>
+                                <p><?php echo $_POST["name"]; ?> <br/></p>
                             </div>
                             <div class="form">
                                 <h3>Description : <br /></h3>
-                                <p><?php echo $_POST["text"];?> <br/></p>
+                                <p><?php echo $_POST["text"]; ?> <br/></p>
                             </div>
                             <div class="form">
                                 <h3>Link : <br /></h3>
-                                <p><?php echo $_POST["link"];?> <br/></p>
+                                <p><?php echo $_POST["link"]; ?> <br/></p>
                             </div>
                             <input type="submit" name="btn_back" value="戻る">
                             <input type="submit" name="btn_submit" value="送信">
@@ -177,7 +176,7 @@ function del_btn($arrayvalue) {
 
         <!--基本ページ-->
         <!--メッセージ表示、page_flag ===2 -->
-        <?php if ( $page_flag == 0 || $page_flag == 2 ): ?> 
+        <?php else: ?> 
             <div class="tabs">
                 <input id="add" type="radio" name="tab_item" checked>
                 <label class="tab_item" for="add">新規追加</label>
@@ -222,7 +221,7 @@ function del_btn($arrayvalue) {
                             <?php
                                 foreach($product as $p) {
                                     print '<div class="col">';
-                                    print '<h5 class="his-content">' .$p[0] .'<br>';
+                                    print '<h5 class="his-content">' .$p[0] .'<br> </h5>';
                                     print '<p class="content-text">' .$p[1] .'</p>';
                                     print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                     print '<p hidden class="p_number">'.$p[3] .'</p>';
@@ -232,7 +231,6 @@ function del_btn($arrayvalue) {
                                     print '<input type="submit" name="btn_delete" value="削除">';
                                     print '</form>';
                                     print '</div>';
-                                    print '</h5>';
                                     print '</div>';
                                     if (isset($_POST["btn_delete"])) {
                                         del_btn($p[3]);
