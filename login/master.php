@@ -47,7 +47,7 @@ if (isset($_POST["confirm"])) {
 } 
 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["btn_submit"])) {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -70,14 +70,12 @@ if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             $Message = 'データベースエラー'; 
         }
         $page_flag = 2; //追加送信後Page
-        header("Location: master.php");
     }
     
 }
 
 // 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
         global $Message;
         $Message = "";
         $name = $_SESSION["NAME"];
@@ -113,10 +111,8 @@ function del_btn($arrayvalue) {
             $Message = "データベースエラー";
         }
         $page_flag = 2;
-        return $page_flag;
         return $Message;
-        header("Location: master.php");
-    }
+        return $page_flag;
 }
 
 ?>
