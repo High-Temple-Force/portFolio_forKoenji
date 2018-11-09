@@ -51,7 +51,7 @@ if (isset($_POST["confirm"])) {
     }
 } 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"]===="POST") {
+if (isset($_POST["btn_submit"]) && ($_SERVER["REQUEST_METHOD"]===="POST")) {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
