@@ -211,6 +211,10 @@ function del_btn($arrayvalue) {
 
         <?php if ($page_flag === 1): ?>
             <div class="tabs">
+                <input id="add" type="radio" name="tab_item" checked>
+                <label class="tab_item" for="add">新規追加</label>
+                <input id="change" type="radio" name="tab_item" >
+                <label class="tab_item" for="change">内容変更</label>
                 <div class="tab_content" id="add_content">
                     <div class="tab_content_description">
                         <form action="" method="POST">
