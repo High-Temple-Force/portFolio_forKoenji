@@ -248,7 +248,5 @@ function del_btn($arrayvalue) {
             </div>
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
-
-        <?php endif; ?>
     </body>
 </html>
