@@ -116,7 +116,6 @@ function del_btn($arrayvalue) {
     return $page_flag;
     return $Message;
 }
-
 ?>
 
 
@@ -180,7 +179,6 @@ function del_btn($arrayvalue) {
                     </div>
                 </div>
             </div>
-
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
                     <div class="flex">
@@ -207,7 +205,8 @@ function del_btn($arrayvalue) {
                         ?>
                     </div>
                 </div>
-
+            </div>
+        </div>
         <!--追加内容確認ページ、page_flag=１-->
 
         <?php if ($page_flag === 1): ?>
@@ -243,6 +242,7 @@ function del_btn($arrayvalue) {
                     </div>
                 </div>
             </div>
+        <?php endif; ?>
         <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
     </body>
 </html>
