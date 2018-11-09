@@ -224,7 +224,7 @@ function del_btn($arrayvalue) {
                             <?php
                                 foreach($product as $p) {
                                     print '<div class="col">';
-                                    print '<h5 class="his-content">' .$p[0] .'<br> </h5>';
+                                    print '<h5 class="his-content">' .$p[0] .'<br>';
                                     print '<p class="content-text">' .$p[1] .'</p>';
                                     print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                     print '<input type="hidden" class="p_number" value="'.$p[3] .'">';
@@ -232,6 +232,7 @@ function del_btn($arrayvalue) {
                                     print '<input type="submit" name="btn_edit" value="編集">';
                                     print '<input type="submit" name="btn_delete" value="削除">';
                                     print '</form>';
+                                    print '</h5>';
                                     print '</div>';
                                     if (isset($_POST["btn_delete"])) {
                                         del_btn($p[3]);
