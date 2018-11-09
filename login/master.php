@@ -178,8 +178,7 @@ function del_btn($arrayvalue) {
 
 
 
-    <!--追加内容送信後ページ、page_flag = 2-->
-        <?php elseif ( $page_flag === 2 ): ?>
+        <!--追加内容送信後ページ、page_flag = 2-->
             <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
@@ -187,34 +186,36 @@ function del_btn($arrayvalue) {
             <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
+                <?php else ( $page_flag === 2 ): ?>
                 <div><font color="#ff0000"><?php echo htmlspecialchars($Message, $ENT_QUOTES) ;?></font></div>
-                    <div class="form">
-                        <!--ここに、アクションのタイプ記入-->
-                        <form action="" method="POST">                            
-                            <div class="name">
-                                <h3><br />Product Name : </h3>
-                                <p>プロダクトのタイトルを入力してください。<br />  
-                                        <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="text">
-                                <h3>Description : </h3>
-                                <p>プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="link">
-                                <h3>Link : </h3>
-                                <p>プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="submit">
-                                <p>  <input type="submit" name="confirm" value="内容を確認する"></p>
-                            </div>  
-                        </form>    
+                <?php endif;?>    
+                <div class="form">
+                    <!--ここに、アクションのタイプ記入-->
+                    <form action="" method="POST">                            
+                        <div class="name">
+                            <h3><br />Product Name : </h3>
+                            <p>プロダクトのタイトルを入力してください。<br />  
+                                    <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
+                            </p>
+                        </div>
+                        <div class="text">
+                            <h3>Description : </h3>
+                            <p>プロダクトの説明文を入力してください。<br />
+                                <textarea name="text" rows="6" cols="55"></textarea><br /><br />
+                            </p>
+                        </div>
+                        <div class="link">
+                            <h3>Link : </h3>
+                            <p>プロダクトのURLを入力してください。 <br />
+                                <textarea name="link" rows="1" cols="55"></textarea><br /><br />
+                            </p>
+                        </div>
+                        <div class="submit">
+                            <p>  <input type="submit" name="confirm" value="内容を確認する"></p>
+                        </div>  
+                    </form>    
 
-                    </div>
+                </div>
                 </div>
             </div>
 
@@ -248,83 +249,6 @@ function del_btn($arrayvalue) {
             <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         </div>
 
-    <!--初期状態ページ、page_flag = 0-->
-        <?php else: ?>　
-            <div class="tabs">
-            <input id="add" type="radio" name="tab_item" checked>
-            <label class="tab_item" for="add">新規追加</label>
-            <input id="change" type="radio" name="tab_item" >
-            <label class="tab_item" for="change">内容変更</label>
-
-            <div class="tab_content" id="add_content">
-                <div class="tab_content_description">
-                    <div class="form">
-                        <!--ここに、アクションのタイプ記入-->
-                        <form action="" method="POST">
-                            <div class="name">
-                                <h3><br />Product Name : </h3>
-                                <p>
-                                    プロダクトのタイトルを入力してください。<br />  
-                                        <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
-                                </p>
-                            </div>
-
-                            <div class="text">
-                                <h3>Description : </h3>
-                                <p>
-                                    プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-
-                            <div class="link">
-                                <h3>Link : </h3>
-                                <p>
-                                    プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            
-                            <div class="submit">
-                                <p>
-                                    <input type="submit" name="confirm" value="追加内容を確認する">
-                                </p>
-                            </div>  
-                        </form>    
-
-                    </div>
-                </div>
-            </div>
-            <div class="tab_content" id="change_content">
-                <div class="tab_content_description">
-                    <div class="flex">
-                        <?php
-                            foreach($product as $p) {
-                                print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$p[3] .' </p>';
-                                print '<div class="form">';
-                                print '<form method="POST">';
-                                print '<input type="submit" name="btn_edit" value="編集">';
-                                print '<input type="submit" name="btn_delete" value="削除">';
-                                print '</form>';
-                                print '</div>';
-                                print '</h5>';
-                                print '</div>';
-                                if (isset($_POST["btn_delete"])) {
-                                    del_btn($p[3]);
-
-                                }
-                            }
-                            //unset($p);
-                        ?>
-
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         <?php endif; ?>
     </body>
 </html>
