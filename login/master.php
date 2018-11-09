@@ -45,6 +45,8 @@ if (isset($_POST["confirm"])) {
         $Message = 'リンクが未入力です。';
     } else if (empty($_POST["userdef"])) {
         $Message = 'ユーザーが指定されていません。';
+    } else {
+    $page_flag = 1;
     }
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $page_flag = 1; //追加内容確認Page
