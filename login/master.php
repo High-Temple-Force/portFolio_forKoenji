@@ -8,6 +8,7 @@ if (!isset($_SESSION["NAME"])) {
 }
 
 //各変数定義
+//$_SESSION["message"] = $Message;　リロード後もメッセージ表示するべく準備中
 $Message = ""; 
 $name = $_SESSION["NAME"];
 global $name;
@@ -68,11 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } 
                 $pdo->query($cmd);
                 header('Location: master.php'); 
-                $Message = '登録が完了しました。';
+                $Message = '登録が完了しました。'; //表示されません、、、
                 $page_flag = 2; //追加送信後Page
             } catch (PDOException $e) {
                 header('Location: master.php'); 
-                $Message = 'データベースエラー'; 
+                $Message = 'データベースエラー'; //表示されません、、、
                 $page_flag = 2; //追加送信後Page
             }
         }
@@ -83,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         global $Message;
         $Message = "";
         $name = $_SESSION["NAME"];
@@ -109,10 +111,14 @@ function del_btn($arrayvalue) {
             $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
             $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
             $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
-            $pdo->query($cmd) ;
-            $pdo->query($cmd_drop) ;
-            $pdo->query($cmd_add) ;
-            $pdo->query($cmd_auto) ;
+            $query_1 = $pdo->prepare($cmd) ;
+            $query_1->execute();
+            $query_2 = $pdo->prepare($cmd_drop) ;
+            $query_2->execute();
+            $query_3 = $pdo->prepare($cmd_add) ;
+            $query_3->execute();
+            $query_4 = $pdo->prepare($cmd_auto) ;
+            $query_4->execute();
             $Message = "削除しました。";
         } catch (PDOException $e) {
             $Message = "データベースエラー";
@@ -120,6 +126,8 @@ function del_btn($arrayvalue) {
         $page_flag = 2;
         return $Message;
         return $page_flag;
+        header('Location: master.php'); 
+    } 
 }
 
 ?>
