@@ -6,7 +6,6 @@ if (!isset($_SESSION["NAME"])) {
     exit;
 }
 
-
 //セッション管理処理
 $Message = ""; 
 $name = $_SESSION["NAME"];
@@ -34,7 +33,7 @@ if ($name == "takuto") {
     }
 } 
 
-//入力値確認処理、「内容を確認するボタンが押されたら」
+//入力値確認処理、「内容を確認する」ボタンが押されたら
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -51,7 +50,7 @@ if (isset($_POST["confirm"])) {
 } 
 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"]==="POST") {
+if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -80,7 +79,7 @@ if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"]==="POST") {
 
 // 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
-    if($_SERVER['REQUEST_METHOD']==='POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
         global $Message;
         $Message = "";
         $name = $_SESSION["NAME"];
@@ -121,6 +120,7 @@ function del_btn($arrayvalue) {
     $check_method;
     }
 }
+
 ?>
 
 
@@ -145,7 +145,7 @@ function del_btn($arrayvalue) {
         </header>
 
         <!--追加内容確認ページ、page_flag=１-->
-        <?php if ($page_flag === 1): ?>
+        <?php if ($page_flag == 1): ?>
             <div class="tabs">
                 <div class="tab_content" id="add_content">
                     <div class="tab_content_description">
@@ -167,9 +167,9 @@ function del_btn($arrayvalue) {
                             </div>
                             <input type="submit" name="btn_back" value="戻る">
                             <input type="submit" name="btn_submit" value="送信">
-                            <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
-                            <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
-                            <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
+                            <input type="hidden" name="name" value='<?php echo $_POST["name"]; ?>'>
+                            <input type="hidden" name="text" value='<?php echo $_POST["text"]; ?>'>
+                            <input type="hidden" name="link" value='<?php echo $_POST["link"]; ?>'>
                         </form>
                     </div>
                 </div>
@@ -177,75 +177,73 @@ function del_btn($arrayvalue) {
 
         <!--基本ページ-->
         <!--メッセージ表示、page_flag ===2 -->
-        <?php if ( $page_flag === 0 || $page_flag === 2 ): ?> 
-        <div class="tabs">
-            <input id="add" type="radio" name="tab_item" checked>
-            <label class="tab_item" for="add">新規追加</label>
-            <input id="change" type="radio" name="tab_item" >
-            <label class="tab_item" for="change">内容変更</label>
-            <div class="tab_content" id="add_content">
-                <div class="tab_content_description">
-                    <?php if ($page_flag === 2){
-                        $redtext = "<span style='color:red'> $Message </span>";
-                        echo $redtext;
-                        } ?>    
-                    <div class="form">
-                        <form action="" method="POST">                            
-                            <div class="name">
-                                <h3><br />Product Name : </h3>
-                                <p>プロダクトのタイトルを入力してください。<br />  
+        <?php if ( $page_flag == 0 || $page_flag == 2 ): ?> 
+            <div class="tabs">
+                <input id="add" type="radio" name="tab_item" checked>
+                <label class="tab_item" for="add">新規追加</label>
+                <input id="change" type="radio" name="tab_item" >
+                <label class="tab_item" for="change">内容変更</label>
+                <div class="tab_content" id="add_content">
+                    <div class="tab_content_description">
+                        <?php if ($page_flag == 2) {
+                            $redtext = "<span style='color:red'> $Message </span>";
+                            echo $redtext;
+                            } ?>    
+                        <div class="form">
+                            <form action="" method="POST">                            
+                                <div class="name">
+                                    <h3><br />Product Name : </h3>
+                                    <p>プロダクトのタイトルを入力してください。<br />  
                                         <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="text">
-                                <h3>Description : </h3>
-                                <p>プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="link">
-                                <h3>Link : </h3>
-                                <p>プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55"></textarea><br /><br />
-                                </p>
-                            </div>
-                            <div class="submit">
-                                <p>  <input type="submit" name="confirm" value="内容を確認する"></p>
-                            </div>  
-                        </form>    
-
+                                    </p>
+                                </div>
+                                <div class="text">
+                                    <h3>Description : </h3>
+                                    <p>プロダクトの説明文を入力してください。<br />
+                                        <textarea name="text" rows="6" cols="55"></textarea><br /><br />
+                                    </p>
+                                </div>
+                                <div class="link">
+                                    <h3>Link : </h3>
+                                    <p>プロダクトのURLを入力してください。 <br />
+                                        <textarea name="link" rows="1" cols="55"></textarea><br /><br />
+                                    </p>
+                                </div>
+                                <div class="submit">
+                                    <p>  <input type="submit" name="confirm" value="内容を確認する"></p>
+                                </div>  
+                            </form>    
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="tab_content" id="change_content">
-                <div class="tab_content_description">
-                    <div class="flex">
-                        <?php
-                            foreach($product as $p) {
-                                print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                print '<p hidden class="p_number">'.$p[3] .'</p>';
-                                print '<div class="form">';
-                                print '<form action="" method="POST">';
-                                print '<input type="submit" name="btn_edit" value="編集">';
-                                print '<input type="submit" name="btn_delete" value="削除">';
-                                print '</form>';
-                                print '</div>';
-                                print '</h5>';
-                                print '</div>';
-                                if (isset($_POST["btn_delete"])) {
-                                    del_btn($p[3]);
+                <div class="tab_content" id="change_content">
+                    <div class="tab_content_description">
+                        <div class="flex">
+                            <?php
+                                foreach($product as $p) {
+                                    print '<div class="col">';
+                                    print '<h5 class="his-content">' .$p[0] .'<br>';
+                                    print '<p class="content-text">' .$p[1] .'</p>';
+                                    print '<a href="' .$p[2] .'" class="his-link">link</a>';
+                                    print '<p hidden class="p_number">'.$p[3] .'</p>';
+                                    print '<div class="form">';
+                                    print '<form action="" method="POST">';
+                                    print '<input type="submit" name="btn_edit" value="編集">';
+                                    print '<input type="submit" name="btn_delete" value="削除">';
+                                    print '</form>';
+                                    print '</div>';
+                                    print '</h5>';
+                                    print '</div>';
+                                    if (isset($_POST["btn_delete"])) {
+                                        del_btn($p[3]);
+                                    }
                                 }
-                            }
-                            //unset($p);
-                        ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
         <?php endif; ?>
-        <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
     </body>
 </html>
