@@ -13,6 +13,9 @@ $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 $page_flag = 0;
+$check_method = header("http://104.196.57.180/portFolio_forKoenji/login/master.php"); //二重送信防止用
+
+
 //DBの表示、product配列に格納
 if ($name == "takuto") {  
     $cmd = 'SELECT p_title,p_text,p_url,p_number from t_a_product;';
@@ -31,9 +34,7 @@ if ($name == "takuto") {
     }
 } 
 
-
 //入力値確認処理
-//初期ページ
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -49,7 +50,8 @@ if (isset($_POST["confirm"])) {
         $page_flag = 1; //追加内容確認Page
     }
 } 
-if (isset($_POST["btn_submit"])) {
+//確認Page後、登録処理
+if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"]===="POST") {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -74,47 +76,51 @@ if (isset($_POST["btn_submit"])) {
         }
         $page_flag = 2; //追加送信後Page
     }
+    $check_method;
 }
 
 // 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
-    global $Message;
-    $Message = "";
-    $name = $_SESSION["NAME"];
-    $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-    //takuto
-    if ($name == "takuto") { 
-        $tablex = "a" ;
-    //hayato
-    } elseif ($name == "hayato") {
-        $tablex = "m" ;
-    //daiki
-    } elseif ($name == "daiki") {
-        $tablex = "y" ;
-    //三人以外はエラー返す
-    } else {
-        $Message = "セッションエラー" ;
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        global $Message;
+        $Message = "";
+        $name = $_SESSION["NAME"];
+        $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
+        //takuto
+        if ($name == "takuto") { 
+            $tablex = "a" ;
+        //hayato
+        } elseif ($name == "hayato") {
+            $tablex = "m" ;
+        //daiki
+        } elseif ($name == "daiki") {
+            $tablex = "y" ;
+        //三人以外はエラー返す
+        } else {
+            $Message = "セッションエラー" ;
+            $page_flag = 2;
+            return $page_flag;
+        }
+        try {
+            //引数は、配列の場所示す
+            //DB項目削除後に、もう一度autoincreを振りなおしている
+            $cmd = 'DELETE from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
+            $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
+            $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
+            $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
+            $pdo->query($cmd) ;
+            $pdo->query($cmd_drop) ;
+            $pdo->query($cmd_add) ;
+            $pdo->query($cmd_auto) ;
+            $Message = "削除しました。";
+        } catch (PDOException $e) {
+            $Message = "データベースエラー";
+        }
         $page_flag = 2;
         return $page_flag;
+        return $Message;
+    $check_method;
     }
-    try {
-        //引数は、配列の場所示す
-        //DB項目削除後に、もう一度autoincreを振りなおしている
-        $cmd = 'DELETE from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
-        $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
-        $cmd_add = 'alter table t_'.$tablex.'_product add p_number int(11) primary key not null auto_increment;';
-        $cmd_auto = 'alter table t_'.$tablex.'_product auto_increment =1;';
-        $pdo->query($cmd) ;
-        $pdo->query($cmd_drop) ;
-        $pdo->query($cmd_add) ;
-        $pdo->query($cmd_auto) ;
-        $Message = "削除しました。";
-    } catch (PDOException $e) {
-        $Message = "データベースエラー";
-    }
-    $page_flag = 2;
-    return $page_flag;
-    return $Message;
 }
 ?>
 
