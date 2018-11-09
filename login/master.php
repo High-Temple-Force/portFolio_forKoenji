@@ -12,7 +12,7 @@ $Message = "";
 $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-
+$page_flag = 0;
 //DBの表示、product配列に格納
 if ($name == "takuto") {  
     $cmd = 'SELECT p_title,p_text,p_url,p_number from t_a_product;';
