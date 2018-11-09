@@ -123,10 +123,12 @@ function del_btn($arrayvalue) {
         } catch (PDOException $e) {
             $Message = "データベースエラー";
         }
+        header('Location: master.php'); 
         $page_flag = 2;
         return $Message;
         return $page_flag;
-        header('Location: master.php'); 
+        $page_flag = 2;
+       
     } 
 }
 
