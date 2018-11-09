@@ -186,7 +186,7 @@ function del_btn($arrayvalue) {
             <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <?php else ( $page_flag === 2 ): ?>
+                <?php elseif ( $page_flag === 2 ): ?>
                 <div><font color="#ff0000"><?php echo htmlspecialchars($Message, $ENT_QUOTES) ;?></font></div>
                 <?php endif;?>    
                 <div class="form">
