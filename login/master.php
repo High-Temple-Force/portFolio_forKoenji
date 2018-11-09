@@ -249,6 +249,7 @@ function del_btn($arrayvalue) {
                                     print '</form>';
                                     print '</h5>';
                                     print '</div>';
+                                    var_dump($p[3]);
                                     if (isset($_POST["btn_delete"])) {
                                         del_btn($p[3]);
                                     }
