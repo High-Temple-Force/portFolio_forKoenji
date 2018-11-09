@@ -10,6 +10,7 @@ if (!isset($_SESSION["NAME"])) {
 //各変数定義
 $Message = ""; 
 $name = $_SESSION["NAME"];
+global $name;
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 $page_flag = 0;
@@ -47,7 +48,7 @@ if (isset($_POST["confirm"])) {
 } 
 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"])) {
+if (isset($_POST["btn_submit"]) && if ($_SERVER['REQUEST_METHOD'] === 'POST')) {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
@@ -69,6 +70,7 @@ if (isset($_POST["btn_submit"])) {
         } catch (PDOException $e) {
             $Message = 'データベースエラー'; 
         }
+        header('Location:http://104.196.57.180/portFolio_forKoenji/login/master.php', 
         $page_flag = 2; //追加送信後Page
     }
     
