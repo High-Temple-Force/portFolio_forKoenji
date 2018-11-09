@@ -34,7 +34,7 @@ if ($name == "takuto") {
     }
 } 
 
-//入力値確認処理
+//入力値確認処理、「内容を確認するボタンが押されたら」
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -46,12 +46,10 @@ if (isset($_POST["confirm"])) {
     } else if (empty($_POST["userdef"])) {
         $Message = 'ユーザーが指定されていません。';
     } else {
-    $page_flag = 1;
-    }
-    if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $page_flag = 1; //追加内容確認Page
     }
 } 
+
 //確認Page後、登録処理
 if (isset($_POST["btn_submit"]) && ($_SERVER["REQUEST_METHOD"]==="POST")) {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
@@ -73,8 +71,7 @@ if (isset($_POST["btn_submit"]) && ($_SERVER["REQUEST_METHOD"]==="POST")) {
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
         } catch (PDOException $e) {
-            $Message = 'データベースエラー';
-            
+            $Message = 'データベースエラー'; 
         }
         $page_flag = 2; //追加送信後Page
     }
@@ -146,6 +143,37 @@ function del_btn($arrayvalue) {
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </header>
+
+        <!--追加内容確認ページ、page_flag=１-->
+        <?php if ($page_flag === 1): ?>
+            <div class="tabs">
+                <div class="tab_content" id="add_content">
+                    <div class="tab_content_description">
+                        <form action="" method="POST">
+                            <div class="confirm">
+                                <h2>以下の入力内容でよろしいですか？ <br/></h2>
+                            </div>
+                            <div class="form">
+                                <h3>Product Name : <br /></h3>
+                                <p><?php echo $_POST["name"];?> <br/></p>
+                            </div>
+                            <div class="form">
+                                <h3>Description : <br /></h3>
+                                <p><?php echo $_POST["text"];?> <br/></p>
+                            </div>
+                            <div class="form">
+                                <h3>Link : <br /></h3>
+                                <p><?php echo $_POST["link"];?> <br/></p>
+                            </div>
+                            <input type="submit" name="btn_back" value="戻る">
+                            <input type="submit" name="btn_submit" value="送信">
+                            <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
+                            <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
+                            <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
+                        </form>
+                    </div>
+                </div>
+            </div>
         <!--基本ページ-->
         <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
@@ -215,38 +243,8 @@ function del_btn($arrayvalue) {
                 </div>
             </div>
         </div>
-        <!--追加内容確認ページ、page_flag=１-->
-
-        <?php if ($page_flag === 1): ?>
-            <div class="tabs">
-                <div class="tab_content" id="add_content">
-                    <div class="tab_content_description">
-                        <form action="" method="POST">
-                            <div class="confirm">
-                                <h2>以下の入力内容でよろしいですか？ <br/></h2>
-                            </div>
-                            <div class="form">
-                                <h3>Product Name : <br /></h3>
-                                <p><?php echo $_POST["name"];?> <br/></p>
-                            </div>
-                            <div class="form">
-                                <h3>Description : <br /></h3>
-                                <p><?php echo $_POST["text"];?> <br/></p>
-                            </div>
-                            <div class="form">
-                                <h3>Link : <br /></h3>
-                                <p><?php echo $_POST["link"];?> <br/></p>
-                            </div>
-                            <input type="submit" name="btn_back" value="戻る">
-                            <input type="submit" name="btn_submit" value="送信">
-                            <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
-                            <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
-                            <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
-                        </form>
-                    </div>
-                </div>
-            </div>
         <?php endif;?>
+        
         <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
     </body>
 </html>
