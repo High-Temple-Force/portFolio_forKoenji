@@ -1,4 +1,5 @@
 <?php
+//セッション管理処理
 session_start();
 // ログイン状態チェック
 if (!isset($_SESSION["NAME"])) {
@@ -6,14 +7,12 @@ if (!isset($_SESSION["NAME"])) {
     exit;
 }
 
-//セッション管理処理
+//各変数定義
 $Message = ""; 
 $name = $_SESSION["NAME"];
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 $page_flag = 0;
-$check_method = header("http://104.196.57.180/portFolio_forKoenji/login/master.php"); //二重送信防止用
-
 
 //DBの表示、product配列に格納
 if ($name == "takuto") {  
@@ -71,8 +70,9 @@ if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             $Message = 'データベースエラー'; 
         }
         $page_flag = 2; //追加送信後Page
+        header("Location: master.php")
     }
-    $check_method;
+    
 }
 
 // 削除ボタンが押された場合の処理関数
@@ -115,7 +115,7 @@ function del_btn($arrayvalue) {
         $page_flag = 2;
         return $page_flag;
         return $Message;
-    $check_method;
+    header("Location: master.php");
     }
 }
 
