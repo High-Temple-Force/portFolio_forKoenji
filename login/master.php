@@ -144,32 +144,37 @@ function del_btn($arrayvalue) {
         <!--追加内容確認ページ、page_flag=１-->
         <?php if ($page_flag == 1) : ?>
             <div class="tabs">
-                <div class="tab_content" id="add_content">
-                    <div class="tab_content_description">
-                        <form action="" method="POST">
-                            <div class="confirm">
-                                <h2>以下の入力内容でよろしいですか？ <br/></h2>
-                            </div>
-                            <div class="form">
-                                <h3>Product Name : <br /></h3>
-                                <p><?php echo $_POST["name"]; ?> <br/></p>
-                            </div>
-                            <div class="form">
-                                <h3>Description : <br /></h3>
-                                <p><?php echo $_POST["text"]; ?> <br/></p>
-                            </div>
-                            <div class="form">
-                                <h3>Link : <br /></h3>
-                                <p><?php echo $_POST["link"]; ?> <br/></p>
-                            </div>
-                            <input type="submit" name="btn_back" value="戻る">
-                            <input type="submit" name="btn_submit" value="送信">
-                            <input type="hidden" name="name" value='<?php echo $_POST["name"]; ?>'>
-                            <input type="hidden" name="text" value='<?php echo $_POST["text"]; ?>'>
-                            <input type="hidden" name="link" value='<?php echo $_POST["link"]; ?>'>
-                        </form>
+                <input id="add" type="radio" name="tab_item" checked>
+                <label class="tab_item" for="add">新規追加</label>
+                <input id="change" type="radio" name="tab_item" >
+                <label class="tab_item" for="change">内容変更</label>
+    
+                    <div class="tab_content" id="add_content">
+                        <div class="tab_content_description">
+                            <form action="" method="POST">
+                                <div class="confirm">
+                                    <h2>以下の入力内容でよろしいですか？ <br/></h2>
+                                </div>
+                                <div class="form">
+                                    <h3>Product Name : <br /></h3>
+                                    <p><?php echo $_POST["name"]; ?> <br/></p>
+                                </div>
+                                <div class="form">
+                                    <h3>Description : <br /></h3>
+                                    <p><?php echo $_POST["text"]; ?> <br/></p>
+                                </div>
+                                <div class="form">
+                                    <h3>Link : <br /></h3>
+                                    <p><?php echo $_POST["link"]; ?> <br/></p>
+                                </div>
+                                <input type="submit" name="btn_back" value="戻る">
+                                <input type="submit" name="btn_submit" value="送信">
+                                <input type="hidden" name="name" value='<?php echo $_POST["name"]; ?>'>
+                                <input type="hidden" name="text" value='<?php echo $_POST["text"]; ?>'>
+                                <input type="hidden" name="link" value='<?php echo $_POST["link"]; ?>'>
+                            </form>
+                        </div>
                     </div>
-                </div>
             </div>
 
         <!--基本ページ-->
