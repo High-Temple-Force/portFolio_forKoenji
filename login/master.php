@@ -33,7 +33,7 @@ if ($name == "takuto") {
 
 
 //入力値確認処理
-$page_flag = 0; //初期ページ
+//初期ページ
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -76,8 +76,7 @@ if (isset($_POST["btn_submit"])) {
     }
 }
 
-
-// 削除ボタンが押された場合の処理
+// 削除ボタンが押された場合の処理関数
 function del_btn($arrayvalue) {
     global $Message;
     $Message = "";
@@ -131,8 +130,6 @@ function del_btn($arrayvalue) {
         <title>Koenjineer Portfolio</title>
         <link rel="stylesheet" href="main.css">
     </head>
-
-
     <body>
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300|Amatic+SC:700|Anton|Bangers|Caveat|Cherry+Swash:700|Corben:700|Creepster|Economica:700|Homemade+Apple|IM+Fell+DW+Pica+SC|Kaushan+Script|Londrina+Shadow|Montserrat+Subrayada|Oswald:700|Permanent+Marker|Quicksand|Roboto+Condensed:700|Teko|Vollkorn" rel="stylesheet">
         <header class="header">
@@ -142,7 +139,6 @@ function del_btn($arrayvalue) {
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </header>
-
         <!--基本ページ-->
         <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
@@ -153,10 +149,9 @@ function del_btn($arrayvalue) {
                 <div class="tab_content_description">
                 <!--メッセージ表示、page_flag ===2 -->
                     <?php if ( $page_flag === 2 ) {
-                        $redtext = "<span style='color:red'> $Message さん。</span>";
-                        echo $redtext
-                        }
-                        ?>    
+                        $redtext = "<span style='color:red'> $Message </span>";
+                        echo $redtext;
+                        }?>    
                     <div class="form">
                         <form action="" method="POST">                            
                             <div class="name">
