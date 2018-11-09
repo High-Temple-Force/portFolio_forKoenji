@@ -48,32 +48,35 @@ if (isset($_POST["confirm"])) {
 } 
 
 //確認Page後、登録処理
-if (isset($_POST["btn_submit"]) && if ($_SERVER['REQUEST_METHOD'] === 'POST')) {
-    if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
-        $title = $_POST["name"];
-        $text = $_POST["text"];
-        $link = $_POST["link"];
-        //入力値DB登録処理
-        try {
-            if ($name == "takuto") {  
-                $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "hayato") {
-                $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "daiki") {
-                $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } 
-            $pdo->query($cmd);
-            $Message = '登録が完了しました。';
-        } catch (PDOException $e) {
-            $Message = 'データベースエラー'; 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST["btn_submit"])) {
+        if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
+            $title = $_POST["name"];
+            $text = $_POST["text"];
+            $link = $_POST["link"];
+            //入力値DB登録処理
+            try {
+                if ($name == "takuto") {  
+                    $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } elseif ($name == "hayato") {
+                    $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } elseif ($name == "daiki") {
+                    $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
+                        ("' .$title .'","' .$text .'","' .$link .'");';
+                } 
+                $pdo->query($cmd);
+                $Message = '登録が完了しました。';
+            } catch (PDOException $e) {
+                $Message = 'データベースエラー'; 
+            }
+            header('Location: master.php'); 
+            $page_flag = 2; //追加送信後Page
         }
-        header('Location:http://104.196.57.180/portFolio_forKoenji/login/master.php', 
-        $page_flag = 2; //追加送信後Page
     }
-    
+} else {
+    $page_flag = 0;
 }
 
 // 削除ボタンが押された場合の処理関数
