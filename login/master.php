@@ -67,15 +67,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ("' .$title .'","' .$text .'","' .$link .'");';
                 } 
                 $pdo->query($cmd);
+                header('Location: master.php'); 
+                $page_flag = 2; //追加送信後Page
                 $Message = '登録が完了しました。';
             } catch (PDOException $e) {
                 $Message = 'データベースエラー'; 
+                header('Location: master.php'); 
+                $page_flag = 2; //追加送信後Page
             }
-            header('Location: master.php'); 
-            $page_flag = 2; //追加送信後Page
         }
     }
-} else {
+} else {//リロードした場合
     $page_flag = 0;
 }
 
