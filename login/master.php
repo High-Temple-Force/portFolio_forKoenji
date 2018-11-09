@@ -175,6 +175,8 @@ function del_btn($arrayvalue) {
                 </div>
             </div>
         <!--基本ページ-->
+        <!--メッセージ表示、page_flag ===2 -->
+        <?php if ( $page_flag === 0 || $page_flag === 2 ):?> 
         <div class="tabs">
             <input id="add" type="radio" name="tab_item" checked>
             <label class="tab_item" for="add">新規追加</label>
@@ -182,8 +184,7 @@ function del_btn($arrayvalue) {
             <label class="tab_item" for="change">内容変更</label>
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
-                <!--メッセージ表示、page_flag ===2 -->
-                    <?php if ( $page_flag === 2 ) {
+                    <?php if ($page_flag === 2){
                         $redtext = "<span style='color:red'> $Message </span>";
                         echo $redtext;
                         }?>    
