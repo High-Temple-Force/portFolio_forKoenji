@@ -152,7 +152,7 @@ function del_btn($arrayvalue) {
             <div class="tab_content" id="add_content">
                 <div class="tab_content_description">
                 <!--メッセージ表示、page_flag ===2 -->
-                    <?php elseif ( $page_flag === 2 ) {
+                    <?php if ( $page_flag === 2 ) {
                         $redtext = "<span style='color:red'> $Message さん。</span>";
                         echo $redtext
                         }
