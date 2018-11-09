@@ -107,6 +107,7 @@ function del_btn($arrayvalue) {
         try {
             //引数は、配列の場所示す
             //DB項目削除後に、もう一度autoincreを振りなおしている
+            intval($arrayvalue); //文字列として数字扱ってたので、数列に直す
             $cmd_select = 'SELECT from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
             $cmd = 'DELETE from t_'.$tablex.'_product where p_number='.$arrayvalue.';';
             $cmd_drop = 'alter table t_'.$tablex.'_product drop column p_number;';
