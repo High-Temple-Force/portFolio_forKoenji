@@ -70,7 +70,7 @@ if (isset($_POST["btn_submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             $Message = 'データベースエラー'; 
         }
         $page_flag = 2; //追加送信後Page
-        header("Location: master.php")
+        header("Location: master.php");
     }
     
 }
