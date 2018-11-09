@@ -68,11 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } 
                 $pdo->query($cmd);
                 header('Location: master.php'); 
-                $page_flag = 2; //追加送信後Page
                 $Message = '登録が完了しました。';
+                $page_flag = 2; //追加送信後Page
             } catch (PDOException $e) {
-                $Message = 'データベースエラー'; 
                 header('Location: master.php'); 
+                $Message = 'データベースエラー'; 
                 $page_flag = 2; //追加送信後Page
             }
         }
@@ -180,7 +180,7 @@ function del_btn($arrayvalue) {
                     </div>
             </div>
 
-        <!--基本ページ-->
+        <!--基本ページ、page_flag=0 or none-->
         <!--メッセージ表示、page_flag ===2 -->
         <?php else: ?> 
             <div class="tabs">
