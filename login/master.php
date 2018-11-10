@@ -9,25 +9,14 @@ if (!isset($_SESSION["NAME"])) {
 
 //セッション管理処理
 $Message = "";
-$name = $_SESSION["NAME"];
+$Message2 = '';
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-if ($name == "takuto") {  
-    $cmd = 'SELECT p_title,p_text,p_url from t_a_product;';
-    foreach($pdo->query($cmd) as $row){
-        $product[] = $row;
-    }
-} elseif ($name == "hayato") {
-    $cmd = 'SELECT p_title,p_text,p_url from t_m_product;';
-    foreach($pdo->query($cmd) as $row){
-        $product[] = $row;
-    }
-} elseif ($name == "daiki") {
-    $cmd = 'SELECT p_title,p_text,p_url from t_y_product;';
-    foreach($pdo->query($cmd) as $row){
-        $product[] = $row;
-    }
-} 
+$cmd = 'SELECT p_title,p_text,p_url,p_number from ' .$_SESSION['table'] .';';
+foreach($pdo->query($cmd) as $row){
+    $product[] = $row;
+}
+
 
 
 //入力値確認処理
@@ -55,22 +44,24 @@ if (isset($_POST["btn_submit"])) {
         $link = $_POST["link"];
         //入力値DB登録処理
         try {
-            $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
-            if ($name == "takuto") {  
-                $cmd = 'INSERT INTO koenji.t_a_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "hayato") {
-                $cmd = 'INSERT INTO koenji.t_m_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } elseif ($name == "daiki") {
-                $cmd = 'INSERT INTO koenji.t_y_product (p_title,p_text,p_url) values 
-                    ("' .$title .'","' .$text .'","' .$link .'");';
-            } 
+            $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );  
+            $cmd = 'INSERT INTO koenji.' .$_SESSION['table'] .' (p_title,p_text,p_url) 
+                values ("' .$title .'","' .$text .'","' .$link .'");';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
         }
+    }
+}
+if (isset($_POST["btn_delete"])) {
+    try {
+        $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );  
+        $cmd = 'delete from koenji.' .$_SESSION['table'] .' where p_number = ' .$_POST['btn_delete'] .';';
+        $pdo->query($cmd);
+        $Message2 = '削除が完了しました。';
+    } catch (PDOException $e) {
+        $Message2 = 'データベースエラー';
     }
 }
 ?>
@@ -161,17 +152,20 @@ if (isset($_POST["btn_submit"])) {
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
                     <div class="flex">
+                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
                         <?php
                             foreach($product as $p){
                                 print '<div class="col">';
+                                print '<form action="#" method="POST>';
                                 print '<h5 class="his-content">' .$p[0] .'<br>';
                                 print '<p class="content-text">' .$p[1] .'</p>';
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<div class="btn">';
-                                print '<input type="submit" name="btn_edit" value="編集">';
-                                print '<input type="submit" name="btn_delete" value="削除">';
+                                print '<button type="button" name="btn_edit" value="' .$p[3] .'">編集</button>';
+                                print '<button type="button" name="btn_delete" value="' .$p[3] .'">削除</button>';
                                 print '</div>';
                                 print '</h5>';
+                                print '</form>';
                                 print '</div>';
                             }
                         ?>

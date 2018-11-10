@@ -27,6 +27,16 @@ if (isset($_POST["login"])) {
             if ($password==$dbpassword) {
                 session_regenerate_id(true);
                 $_SESSION["NAME"] = $userid; 
+                if ($_SESSION["NAME"] == "takuto") { 
+                    $_SESSION["table"] = "t_a_product" ;
+                //hayato
+                } elseif ($_SESSION["NAME"] == "hayato") {
+                    $_SESSION["table"] = "t_m_product" ;
+                //daiki
+                } elseif ($_SESSION["NAME"] == "daiki") {
+                    $_SESSION["table"] = "t_y_product" ;
+                //三人以外はエラー返す
+                }
                 header("Location: master.php");  // メイン画面へ遷移
                 exit();  // 処理終了
             } else {
