@@ -49,6 +49,7 @@ if (isset($_POST["btn_submit"])) {
                 values ("' .$title .'","' .$text .'","' .$link .'");';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
+            header("Location: master.php");
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
         }
