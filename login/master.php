@@ -21,6 +21,7 @@ foreach($pdo->query($cmd) as $row){
 
 //入力値確認処理
 $page_flag = 2;
+$page_flag_change = 1;
 if (isset($_POST["confirm"])) {
     $page_flag = 2;
     if (empty($_POST["name"])) {  // emptyは値が空のとき
@@ -68,6 +69,13 @@ if (isset($_POST["btn_delete"])) {
     } catch (PDOException $e) {
         $Message2 = 'データベースエラー';
     }
+}
+if (isset($_POST["btn_edit"])) {
+    $name = $_POST['c_name'];
+    $text = $_POST['c_text'];
+    $link = $_POST['c_link'];
+    $page_flag_chenge = 2;
+    $_SESSION['state'] = 'change';
 }
 ?>
 
@@ -159,26 +167,35 @@ if (isset($_POST["btn_delete"])) {
             </div>
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
-                <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
+                <?php if ($page_flag_change === 1): ?>
+                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
                     <div class="flex">
                         <?php
                             foreach($product as $p){
-                                print '<div class="col">';
-                                print '<h5 class="his-content">' .$p[0] .'<br>';
-                                print '<p class="content-text">' .$p[1] .'</p>';
-                                print '<a href="' .$p[2] .'" class="his-link">link</a>';
-                                print '<div class="btn">';
                                 print '<form action="#" method="POST">';
+                                print '<div class="col">';
+                                print '<h5 class="his-content" name="c_name">' .$p[0] .'<br>';
+                                print '<p class="content-text" name="c_text">' .$p[1] .'</p>';
+                                print '<a name="c_link" value="' .$p[2] .'" href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<div class="btn">';
                                 print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
                                 print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
-                                print '<input type="hidden" name="scroll_top" value="" class="st">';
-                                print '</form>';
                                 print '</div>';
                                 print '</h5>';
                                 print '</div>';
+                                print '</form>';
                             }
                         ?>
                     </div>
+                <?php elseif ( $page_flag_change === 2 ): ?>
+                    <div class="flex">
+                        <?php
+                            print '<form action="#" method="POST">';
+                            print '<button type="submit" class="btn" name="btn_change" value="' .$p[3] .'">登録</button>';
+                            print '</form>';
+                        ?>
+                    </div>
+                <?php endif; ?>
                 </div>
             </div>
         </div>
