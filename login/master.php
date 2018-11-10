@@ -172,8 +172,9 @@ if (isset($_POST["btn_edit"])) {
                     <div class="flex">
                         <?php
                             foreach($product as $p){
-                                print '<form action="#" method="POST">';
+                                
                                 print '<div class="col">';
+                                print '<form action="#" method="POST">';
                                 print '<h5 class="his-content" name="c_name">' .$p[0] .'<br>';
                                 print '<p class="content-text" name="c_text">' .$p[1] .'</p>';
                                 print '<a name="c_link" value="' .$p[2] .'" href="' .$p[2] .'" class="his-link">link</a>';
@@ -182,8 +183,9 @@ if (isset($_POST["btn_edit"])) {
                                 print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
                                 print '</div>';
                                 print '</h5>';
-                                print '</div>';
                                 print '</form>';
+                                print '</div>';
+                                
                             }
                         ?>
                     </div>
