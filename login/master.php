@@ -174,7 +174,7 @@ if (isset($_POST["btn_delete"])) {
                                 print '</div>';
                             }
                         ?>
-                        <script>
+                        <script type="text/javascript">
                             $('form').submit(function(){
                                 var scroll_top = $(window).scrollTop();  //送信時の位置情報を取得
                                 $('input.st',this).prop('value',scroll_top);  //隠しフィールドに位置情報を設定
