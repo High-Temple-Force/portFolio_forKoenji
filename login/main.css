@@ -158,14 +158,14 @@ input[name="tab_item"] {
   }
 
 /*削除編集ボタンのスタイル*/
-input[name="btn_edit"] {
-    width: 20%;
-    float: left;
-    vertical-align:bottom;
-
+form button.btn {
+    background-color: #248;
+    color: #fff;
+    border-style: none;
+    box-shadow: 2px 2px 3px 1px #666;
+}
+form button.btn:hover {
+    background-color: #24d;
+    color: #fff;
+}
     
-}
-input[name="btn_delete"] {
-    width: 20%;
-    float: right;
-}
