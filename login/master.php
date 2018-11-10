@@ -60,6 +60,7 @@ if (isset($_POST["btn_delete"])) {
         $cmd = 'delete from koenji.' .$_SESSION['table'] .' where p_number = ' .$_POST['btn_delete'] .';';
         $pdo->query($cmd);
         $Message2 = '削除が完了しました。';
+        header("Location: master.php");
     } catch (PDOException $e) {
         $Message2 = 'データベースエラー';
     }
@@ -73,6 +74,9 @@ if (isset($_POST["btn_delete"])) {
         <meta charset="utf-8">
         <title>Koenjineer Portfolio</title>
         <link rel="stylesheet" href="main.css">
+        <script type="text/javascript"
+         src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js">
+        </script>
     </head>
 
 
@@ -151,8 +155,8 @@ if (isset($_POST["btn_delete"])) {
             </div>
             <div class="tab_content" id="change_content">
                 <div class="tab_content_description">
+                <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
                     <div class="flex">
-                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
                         <?php
                             foreach($product as $p){
                                 print '<div class="col">';
@@ -163,6 +167,7 @@ if (isset($_POST["btn_delete"])) {
                                 print '<form action="#" method="POST">';
                                 print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
                                 print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
+                                print '<input type="hidden" name="scroll_top" value="" class="st">';
                                 print '</form>';
                                 print '</div>';
                                 print '</h5>';
@@ -173,6 +178,6 @@ if (isset($_POST["btn_delete"])) {
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="../onmouse-1.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/script.js" charset="utf-8"></script>
     </body>
 </html>
