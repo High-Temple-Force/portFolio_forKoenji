@@ -35,6 +35,7 @@ if (isset($_POST["confirm"])) {
     if (!empty($_POST["name"]) && !empty($_POST["text"]) && !empty($_POST["link"])) {
         $page_flag = 1; //追加内容確認Page
     }
+    $_SESSION['state'] = 'add';
 } 
 if (isset($_POST["btn_submit"])) {
     $page_flag = 2; //追加送信後Page
@@ -49,6 +50,7 @@ if (isset($_POST["btn_submit"])) {
                 values ("' .$title .'","' .$text .'","' .$link .'");';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
+            $_SESSION['state'] = 'add';
             header("Location: master.php");
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
@@ -61,6 +63,7 @@ if (isset($_POST["btn_delete"])) {
         $cmd = 'delete from koenji.' .$_SESSION['table'] .' where p_number = ' .$_POST['btn_delete'] .';';
         $pdo->query($cmd);
         $Message2 = '削除が完了しました。';
+        $_SESSION['state'] = 'change';
         header("Location: master.php");
     } catch (PDOException $e) {
         $Message2 = 'データベースエラー';
@@ -91,9 +94,9 @@ if (isset($_POST["btn_delete"])) {
             </ul>
         </header>
         <div class="tabs">
-            <input id="add" type="radio" name="tab_item" checked>
+            <input id="add" type="radio" name="tab_item" value="add" <?php if($_SESSION['state']=='add'){print 'checked';}?>>
             <label class="tab_item" for="add">新規追加</label>
-            <input id="change" type="radio" name="tab_item" >
+            <input id="change" type="radio" name="tab_item" value="change" <?php if($_SESSION['state']=='change'){print 'checked';}?>>
             <label class="tab_item" for="change">内容変更</label>
             
             <div class="tab_content" id="add_content">
@@ -175,17 +178,6 @@ if (isset($_POST["btn_delete"])) {
                                 print '</div>';
                             }
                         ?>
-                        <script type="text/javascript">
-                            $('form').submit(function(){
-                                var scroll_top = $(window).scrollTop();  //送信時の位置情報を取得
-                                $('input.st',this).prop('value',scroll_top);  //隠しフィールドに位置情報を設定
-                            });
-                            
-                            window.onload = function(){
-                                //ロード時に隠しフィールドから取得した値で位置をスクロール
-                                $(window).scrollTop(<?php echo @$_REQUEST['scroll_top']; ?>);
-                            }
-                        </script>
                     </div>
                 </div>
             </div>
