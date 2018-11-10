@@ -27,6 +27,7 @@ if (isset($_POST["login"])) {
             if ($password==$dbpassword) {
                 session_regenerate_id(true);
                 $_SESSION["NAME"] = $userid; 
+                $_SESSION['state'] = 'add';
                 if ($_SESSION["NAME"] == "takuto") { 
                     $_SESSION["table"] = "t_a_product" ;
                 //hayato
