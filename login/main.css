@@ -158,14 +158,26 @@ input[name="tab_item"] {
   }
 
 /*削除編集ボタンのスタイル*/
-[name="btn_edit"] {
-    width: 20%;
-    float: left;
-    vertical-align:bottom;
-
+button.btn {
+    /* 文字サイズを1.4emに指定 */
+    font-size: 1.4em;
+    /* 文字の太をboldに指定 */
+    font-weight: bold;
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+    /* 文字色を白色に指定 */
+    color: #fff;
+    /* ボーダーをなくす */
+    border-style: none;
+    box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+button.btn:hover {
+    background-color: #24d;
+    color: #fff;
+}
     
-}
-[name="btn_delete"] {
-    width: 20%;
-    float: right;
-}

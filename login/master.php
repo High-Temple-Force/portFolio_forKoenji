@@ -161,8 +161,8 @@ if (isset($_POST["btn_delete"])) {
                                 print '<a href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<div class="btn">';
                                 print '<form action="#" method="POST">';
-                                print '<button type="button" name="btn_edit" value="' .$p[3] .'">編集</button>';
-                                print '<button type="button" name="btn_delete" value="' .$p[3] .'">削除</button>';
+                                print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
+                                print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
                                 print '</form>';
                                 print '</div>';
                                 print '</h5>';
