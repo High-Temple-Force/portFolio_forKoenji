@@ -110,8 +110,7 @@ if (isset($_POST["btn_edit_submit"])) {
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
             $_SESSION['state'] = 'add';
-            //ここ中止
-            $page_flag_change =1;
+            header("Location: master.php");
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
             $_SESSION['state'] = 'add';
@@ -227,7 +226,6 @@ if (isset($_POST["btn_edit_submit"])) {
                                 print '<p class="content-text" name="c_text">' .$p[1] .'</p>';
                                 print '<a name="c_link" href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<div class="btn">';
-                                print var_dump($cmd);
                                 print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
                                 print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
                                 print '<input type="hidden" name="e_name" value="'.$p[0].'">';
