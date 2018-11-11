@@ -90,8 +90,6 @@ if (isset($_POST["confirm_edit"])) {
         $Message = '説明文が未入力です。';
     } else if (empty($_POST["link"])) {
         $Message = 'リンクが未入力です。';
-    } else if (empty($_POST["userdef"])) {
-        $Message = 'ユーザーが指定されていません。';
     } else {
         $page_flag_change = 3;
     }
@@ -248,7 +246,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3><br />Product Name : </h3>
                                 <p>プロダクトのタイトルを入力してください。<br />  
                                     <textarea name="name" rows="1" cols="55">
-                                        <?php var_dump($name); ?>
+                                        <?php $name; ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
@@ -256,7 +254,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3>Description : </h3>
                                 <p>プロダクトの説明文を入力してください。<br />
                                     <textarea name="text" rows="6" cols="55">
-                                        <?php var_dump($_POST["c_name"]); ?>
+                                        <?php $text; ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
