@@ -74,7 +74,6 @@ if (isset($_POST["btn_delete"])) {
 //編集処理
 //編集ボタン押下時確認処理
 if (isset($_POST["btn_edit"])) {
-    $page_flag_change = 2;
     $name = $_POST['c_name'];
     $text = $_POST['c_text'];
     $link = $_POST['c_link'];
@@ -244,7 +243,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3><br />Product Name : </h3>
                                 <p>プロダクトのタイトルを入力してください。<br />  
                                     <textarea name="name" rows="1" cols="55">
-                                        <?php echo $name; ?>
+                                        <?php var_dump($name); ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
