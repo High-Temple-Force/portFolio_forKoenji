@@ -75,11 +75,11 @@ if (isset($_POST["btn_delete"])) {
 //編集処理
 //編集ボタン押下時確認処理
 if (isset($_POST["btn_edit"])) {
+    $page_flag_change = 2;
     $name = $_POST['c_name'];
     $text = $_POST['c_text'];
     $link = $_POST['c_link'];
     $_SESSION['state'] = 'change';
-    $page_flag_change = 2;
 }
 //編集内容確認処理
 if (isset($_POST["confirm_edit"])) {
@@ -216,7 +216,7 @@ if (isset($_POST["btn_edit_submit"])) {
             <div class="tab_content_description">
                 <!--テーブル内容表示画面-->
                 <?php if ($page_flag_change === 1): ?>
-                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
+                    <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, $ENT_QUOTES); ?></font></div>
                     <div class="flex">
                         <?php
                             foreach($product as $p) {
@@ -232,9 +232,6 @@ if (isset($_POST["btn_edit_submit"])) {
                                 print '</h5>';
                                 print '</form>';
                                 print '</div>';
-                                if (isset($_POST["btn_delete"])) {
-                                    del_btn($p[3]);
-                                }
                             }
                             //unset($p);
                         ?>
