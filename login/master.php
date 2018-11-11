@@ -11,6 +11,7 @@ $Message2 = '';
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 $cmd = 'SELECT p_title,p_text,p_url,p_number from ' .$_SESSION['table'] .';';
+$_SESSION['state'] = 'add';
 foreach($pdo->query($cmd) as $row){
     $product[] = $row;
 }
