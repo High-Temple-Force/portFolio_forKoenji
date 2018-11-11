@@ -222,8 +222,8 @@ if (isset($_POST["btn_edit_submit"])) {
                             foreach($product as $p) {
                                 print '<div class="col">';
                                 print '<form action="#" method="POST">';
-                                print '<h5 class="his-content" name="c_name">' .$p[0] .'<br>';
-                                print '<p class="content-text" name="c_text">' .$p[1] .'</p>';
+                                print '<h5 class="his-content" name="c_name" value="'.$p[0].'">' .$p[0] .'<br>';
+                                print '<p class="content-text" name="c_text" value="'.$p[1].'">' .$p[1] .'</p>';
                                 print '<a name="c_link" value="' .$p[2] .'" href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<div class="btn">';
                                 print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
