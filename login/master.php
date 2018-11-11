@@ -248,25 +248,19 @@ if (isset($_POST["btn_edit_submit"])) {
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>プロダクトのタイトルを入力してください。<br />  
-                                    <textarea name="name" rows="1" cols="55">
-                                        <?php echo $name; ?>
-                                    </textarea><br /><br />
+                                    <textarea name="name" rows="1" cols="55"><?php echo $name; ?></textarea><br /><br />
                                 </p>
                             </div>
                             <div class="text">
                                 <h3>Description : </h3>
                                 <p>プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55">
-                                        <?php echo $text; ?>
-                                    </textarea><br /><br />
+                                    <textarea name="text" rows="6" cols="55"><?php echo $text; ?></textarea><br /><br />
                                 </p>
                             </div>
                             <div class="link">
                                 <h3>Link : </h3>
                                 <p>プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55">
-                                        <?php echo $link; ?>
-                                    </textarea><br /><br />
+                                    <textarea name="link" rows="1" cols="55"><?php echo $link; ?></textarea><br /><br />
                                 </p>
                             </div>
                             <div class="p_num">
