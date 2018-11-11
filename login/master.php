@@ -154,7 +154,6 @@ if (isset($_POST["btn_edit_submit"])) {
         <!--新規追加側タブ内容-->
         <div class="tab_content" id="add_content">
             <div class="tab_content_description">
-
                 <!--入力内容確認画面-->
                 <?php if ($page_flag === 1): ?>
                     <form action="" method="POST">
@@ -173,7 +172,6 @@ if (isset($_POST["btn_edit_submit"])) {
                             <h3>Link : <br /></h3>
                             <p><?php echo $_POST["link"]?> <br/></p>
                         </div>
-
                         <input type="submit" name="btn_back" value="戻る">
                         <input type="submit" name="btn_submit" value="送信">
                         <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
