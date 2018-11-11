@@ -163,11 +163,9 @@ form button.btn {
     color: #fff;
     border-style: none;
     box-shadow: 2px 2px 3px 1px #666;
-    float: left;
 }
 form button.btn:hover {
     background-color: #24d;
     color: #fff;
-    float: right;
 }
     
