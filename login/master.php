@@ -109,7 +109,7 @@ if (isset($_POST["btn_edit_submit"])) {
             p_title = "'.$title.'", p_text = "'.$text.'", p_url = "'.$link.'" where p_number = '.$p_num.';';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
-            $_SESSION['state'] = 'add';
+            $_SESSION['state'] = 'change';
             header("Location: master.php");
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
