@@ -253,7 +253,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3>Description : </h3>
                                 <p>プロダクトの説明文を入力してください。<br />
                                     <textarea name="text" rows="6" cols="55">
-                                        <?php echo $text; ?>
+                                        <?php var_dump($_POST["c_name"]); ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
