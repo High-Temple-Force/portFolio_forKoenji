@@ -106,7 +106,7 @@ if (isset($_POST["btn_edit_submit"])) {
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );  
             $cmd = 'UPDATE koenji.'.$_SESSION['table'].' SET 
-            p_title = '.$title.', p_text = '.$text.', p_url = '.$link.' where p_number = '.$p_num.';';
+            p_title = "'.$title.'", p_text = "'.$text.'", p_url = "'.$link.'" where p_number = '.$p_num.';';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
             $_SESSION['state'] = 'add';
