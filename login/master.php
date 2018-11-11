@@ -53,6 +53,7 @@ if (isset($_POST["btn_submit"])) {
             header("Location: master.php");
         } catch (PDOException $e) {
             $Message = 'データベースエラー';
+            
         }
     }
 }
@@ -153,6 +154,7 @@ if (isset($_POST["btn_edit_submit"])) {
         <!--新規追加側タブ内容-->
         <div class="tab_content" id="add_content">
             <div class="tab_content_description">
+
                 <!--入力内容確認画面-->
                 <?php if ($page_flag === 1): ?>
                     <form action="" method="POST">
@@ -187,6 +189,7 @@ if (isset($_POST["btn_edit_submit"])) {
                             <div class="name">
                                 <h3><br />Product Name : </h3>
                                 <p>プロダクトのタイトルを入力してください。<br />  
+
                                     <textarea name="name" rows="1" cols="55" ></textarea><br /><br />
                                 </p>
                             </div>
@@ -218,7 +221,7 @@ if (isset($_POST["btn_edit_submit"])) {
                     <div><font color="#ff0000"><?php echo htmlspecialchars($Message2, ENT_QUOTES); ?></font></div>
                     <div class="flex">
                         <?php
-                            foreach($product as $p){
+                            foreach($product as $p) {
                                 print '<div class="col">';
                                 print '<form action="#" method="POST">';
                                 print '<h5 class="his-content" name="c_name">' .$p[0] .'<br>';
@@ -231,7 +234,11 @@ if (isset($_POST["btn_edit_submit"])) {
                                 print '</h5>';
                                 print '</form>';
                                 print '</div>';
+                                if (isset($_POST["btn_delete"])) {
+                                    del_btn($p[3]);
+                                }
                             }
+                            //unset($p);
                         ?>
                     </div>
                 <!--編集内容入力画面-->
