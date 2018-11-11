@@ -79,6 +79,7 @@ if (isset($_POST["btn_edit"])) {
     $name = $_POST['e_name'];
     $text = $_POST['e_text'];
     $link = $_POST['e_link'];
+    $p_num = $_POST['e_num'];
     $_SESSION['state'] = 'change';
 }
 //編集内容確認処理
@@ -100,11 +101,12 @@ if (isset($_POST["btn_edit_submit"])) {
         $title = $_POST["name"];
         $text = $_POST["text"];
         $link = $_POST["link"];
+        $p_num = $_POST["p_num"];
         //入力値DB登録処理
         try {
             $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );  
             $cmd = 'UPDATE koenji.'.$_SESSION['table'].' SET 
-            p_title = '.$title.', p_text = '.$text.', p_url = '.$link.' where p_number = '.$_POST['btn_edit'].';';
+            p_title = '.$title.', p_text = '.$text.', p_url = '.$link.' where p_number = '.$p_num.';';
             $pdo->query($cmd);
             $Message = '登録が完了しました。';
             $_SESSION['state'] = 'add';
@@ -231,6 +233,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 print '<input type="hidden" name="e_name" value="'.$p[0].'">';
                                 print '<input type="hidden" name="e_text" value="'.$p[1].'">';
                                 print '<input type="hidden" name="e_link" value="'.$p[2].'">';
+                                print '<input type="hidden" name="e_num" value="'.$p[3].'">';
                                 print '</div>';
                                 print '</h5>';
                                 print '</form>';
@@ -267,6 +270,9 @@ if (isset($_POST["btn_edit_submit"])) {
                                         <?php echo $link; ?>
                                     </textarea><br /><br />
                                 </p>
+                            </div>
+                            <div class="p_num">
+                                <input type="hidden" name="p_num" value="<?php $p_num ;?>">
                             </div>
                             <div class="submit">
                                 <p><input type="submit" name="confirm_edit" value="内容を確認する"></p>
