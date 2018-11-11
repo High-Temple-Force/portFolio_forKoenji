@@ -247,21 +247,18 @@ if (isset($_POST["btn_edit_submit"])) {
                         <form action="" method="POST">                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
-                                <p>プロダクトのタイトルを入力してください。<br />  
+                                <p>プロダクトのタイトルを入力してください。<br /></p>
                                     <textarea name="name" rows="1" cols="55"><?php echo $name; ?></textarea><br /><br />
-                                </p>
                             </div>
                             <div class="text">
                                 <h3>Description : </h3>
-                                <p>プロダクトの説明文を入力してください。<br />
+                                <p>プロダクトの説明文を入力してください。<br /></p>
                                     <textarea name="text" rows="6" cols="55"><?php echo $text; ?></textarea><br /><br />
-                                </p>
                             </div>
                             <div class="link">
                                 <h3>Link : </h3>
-                                <p>プロダクトのURLを入力してください。 <br />
+                                <p>プロダクトのURLを入力してください。 <br /></p>
                                     <textarea name="link" rows="1" cols="55"><?php echo $link; ?></textarea><br /><br />
-                                </p>
                             </div>
                             <div class="p_num">
                                 <input type="hidden" name="p_num" value="<?php echo $p_num; ?>">
