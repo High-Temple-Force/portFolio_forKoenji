@@ -5,8 +5,8 @@ session_start();
 $errorMessage = "";
 
 
-// 削除ボタンが押された場合
-if (isset($_POST["delete"])) {
+// 編集ボタンが押された場合
+if (isset($_POST["btn_edit"])) {
     $Message = "";
     $name = $_SESSION["NAME"];
     $product = Array();
