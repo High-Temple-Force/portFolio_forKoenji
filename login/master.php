@@ -76,9 +76,9 @@ if (isset($_POST["btn_delete"])) {
 //編集ボタン押下時確認処理
 if (isset($_POST["btn_edit"])) {
     $page_flag_change = 2;
-    $name = $_POST['c_name'];
-    $text = $_POST['c_text'];
-    $link = $_POST['c_link'];
+    $name = $_POST['e_name'];
+    $text = $_POST['e_text'];
+    $link = $_POST['e_link'];
     $_SESSION['state'] = 'change';
 }
 //編集内容確認処理
@@ -222,12 +222,15 @@ if (isset($_POST["btn_edit_submit"])) {
                             foreach($product as $p) {
                                 print '<div class="col">';
                                 print '<form action="#" method="POST">';
-                                print '<h5 class="his-content" name="c_name" value="'.$p[0].'">' .$p[0] .'<br>';
-                                print '<p class="content-text" name="c_text" value="'.$p[1].'">' .$p[1] .'</p>';
-                                print '<a name="c_link" value="' .$p[2] .'" href="' .$p[2] .'" class="his-link">link</a>';
+                                print '<h5 class="his-content" name="c_name">' .$p[0] .'<br>';
+                                print '<p class="content-text" name="c_text">' .$p[1] .'</p>';
+                                print '<a name="c_link" href="' .$p[2] .'" class="his-link">link</a>';
                                 print '<div class="btn">';
                                 print '<button type="submit" class="btn" name="btn_edit" value="' .$p[3] .'">編集</button>';
                                 print '<button type="submit" class="btn" name="btn_delete" value="' .$p[3] .'">削除</button>';
+                                print '<input type="hidden" name="e_name" value="'.$p[0].'">';
+                                print '<input type="hidden" name="e_text" value="'.$p[1].'">';
+                                print '<input type="hidden" name="e_link" value="'.$p[2].'">';
                                 print '</div>';
                                 print '</h5>';
                                 print '</form>';
