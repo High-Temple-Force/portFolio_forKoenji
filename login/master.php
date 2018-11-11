@@ -272,7 +272,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 </p>
                             </div>
                             <div class="p_num">
-                                <input type="hidden" name="p_num" value="<?php $p_num ;?>">
+                                <input type="hidden" name="p_num" value="<?php $p_num; ?>">
                             </div>
                             <div class="submit">
                                 <p><input type="submit" name="confirm_edit" value="内容を確認する"></p>
@@ -304,6 +304,7 @@ if (isset($_POST["btn_edit_submit"])) {
                         <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>">
                         <input type="hidden" name="text" value="<?php echo $_POST["text"]; ?>">
                         <input type="hidden" name="link" value="<?php echo $_POST["link"]; ?>">
+                        <input type="hidden" name="p_num" value="<?php echo $_POST["p_num"]; ?>">
                     </form>
                 <?php endif; ?>
             </div>
