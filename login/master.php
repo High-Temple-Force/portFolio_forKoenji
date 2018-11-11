@@ -246,7 +246,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3><br />Product Name : </h3>
                                 <p>プロダクトのタイトルを入力してください。<br />  
                                     <textarea name="name" rows="1" cols="55">
-                                        <?php $name; ?>
+                                        <?php echo $name; ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
@@ -254,7 +254,7 @@ if (isset($_POST["btn_edit_submit"])) {
                                 <h3>Description : </h3>
                                 <p>プロダクトの説明文を入力してください。<br />
                                     <textarea name="text" rows="6" cols="55">
-                                        <?php $text; ?>
+                                        <?php echo $text; ?>
                                     </textarea><br /><br />
                                 </p>
                             </div>
