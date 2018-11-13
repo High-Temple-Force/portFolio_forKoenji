@@ -1,5 +1,5 @@
 <?php
-session_save_path('/tmp/koenji');
+
 session_start();
 
 if (isset($_SESSION["NAME"])) {

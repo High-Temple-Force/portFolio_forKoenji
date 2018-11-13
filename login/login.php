@@ -1,6 +1,6 @@
 <?php
 // セッション開始
-session_save_path('/tmp/koenji');
+
 session_start();
 // エラーメッセージの初期化
 $errorMessage = "";
