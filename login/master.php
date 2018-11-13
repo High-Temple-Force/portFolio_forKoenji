@@ -12,6 +12,7 @@ $Message2 = '';
 $product = Array();
 $pdo = new PDO ( 'mysql:dbname=koenji; host=localhost;port=3306; charset=utf8', 'root', 'Zaq12wsx!' );
 $cmd = 'SELECT p_title,p_text,p_url,p_number from ' .$_SESSION['table'] .';';
+$_SESSION['state'] = 'add';
 foreach($pdo->query($cmd) as $row){
     $product[] = $row;
 }
@@ -248,27 +249,18 @@ if (isset($_POST["btn_edit_submit"])) {
                         <form action="" method="POST">                            
                             <div class="name">
                                 <h3><br />Product Name : </h3>
-                                <p>プロダクトのタイトルを入力してください。<br />  
-                                    <textarea name="name" rows="1" cols="55">
-                                        <?php echo $name; ?>
-                                    </textarea><br /><br />
-                                </p>
+                                <p>プロダクトのタイトルを入力してください。<br></p>
+                                <textarea name="name" rows="1" cols="55"><?php echo $name; ?></textarea><br><br>
                             </div>
                             <div class="text">
                                 <h3>Description : </h3>
-                                <p>プロダクトの説明文を入力してください。<br />
-                                    <textarea name="text" rows="6" cols="55">
-                                        <?php echo $text; ?>
-                                    </textarea><br /><br />
-                                </p>
+                                <p>プロダクトの説明文を入力してください。<br></p>
+                                <textarea name="text" rows="6" cols="55"><?php echo $text; ?></textarea><br><br>
                             </div>
                             <div class="link">
                                 <h3>Link : </h3>
-                                <p>プロダクトのURLを入力してください。 <br />
-                                    <textarea name="link" rows="1" cols="55">
-                                        <?php echo $link; ?>
-                                    </textarea><br /><br />
-                                </p>
+                                <p>プロダクトのURLを入力してください。<br></p>
+                                <textarea name="link" rows="1" cols="55"><?php echo $link; ?></textarea><br><br>
                             </div>
                             <div class="p_num">
                                 <input type="hidden" name="p_num" value="<?php echo $p_num; ?>">
